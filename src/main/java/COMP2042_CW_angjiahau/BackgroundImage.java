@@ -1,4 +1,4 @@
-package p4_group_8_repo;
+package COMP2042_CW_angjiahau;
 
 import javafx.scene.image.Image;
 

@@ -1,6 +1,7 @@
-package p4_group_8_repo;
+package COMP2042_CW_angjiahau;
 
 import java.io.File;
+
 import java.util.List;
 
 import javafx.animation.AnimationTimer;
@@ -29,18 +30,18 @@ public class Main extends Application {
 	    
 		
 
-		BackgroundImage froggerback = new BackgroundImage("file:src/p4_group_8_repo/Screen Shot 2017-05-29 at 10.02.14 PM.png");
+		BackgroundImage froggerback = new BackgroundImage("file:src/main/java/COMP2042_CW_angjiahau/iKogsKW.png");
 	    
 		background.add(froggerback);
 		
-		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 0, 166, 0.75));
-		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 220, 166, 0.75));
-		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 440, 166, 0.75));
-		background.add(new Log("file:src/p4_group_8_repo/logs.png", 300, 0, 276, -2));
-		background.add(new Log("file:src/p4_group_8_repo/logs.png", 300, 400, 276, -2));
-		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 50, 329, 0.75));
-		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 270, 329, 0.75));
-		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 490, 329, 0.75));
+		background.add(new Log("file:src/main/java/COMP2042_CW_angjiahau/log3.png", 150, 0, 166, 0.75));
+		background.add(new Log("file:src/main/java/COMP2042_CW_angjiahau/log3.png", 150, 220, 166, 0.75));
+		background.add(new Log("file:src/main/java/COMP2042_CW_angjiahau/log3.png", 150, 440, 166, 0.75));
+		background.add(new Log("file:src/main/java/COMP2042_CW_angjiahau/logs.png", 300, 0, 276, -2));
+		background.add(new Log("file:src/main/java/COMP2042_CW_angjiahau/logs.png", 300, 400, 276, -2));
+		background.add(new Log("file:src/main/java/COMP2042_CW_angjiahau/log3.png", 150, 50, 329, 0.75));
+		background.add(new Log("file:src/main/java/COMP2042_CW_angjiahau/log3.png", 150, 270, 329, 0.75));
+		background.add(new Log("file:src/main/java/COMP2042_CW_angjiahau/log3.png", 150, 490, 329, 0.75));
 		
 		
 		background.add(new Turtle(500, 376, -1, 130, 130));
@@ -54,18 +55,18 @@ public class Main extends Application {
 		background.add(new End(141 + 141-13,96));
 		background.add(new End(141 + 141-13+141-13+1,96));
 		background.add(new End(141 + 141-13+141-13+141-13+3,96));
-		animal = new Animal("file:src/p4_group_8_repo/froggerUp.png");
+		animal = new Animal("file:src/main/java/COMP2042_CW_angjiahau/froggerUp.png");
 		background.add(animal);
-		background.add(new Obstacle("file:src/p4_group_8_repo/truck1"+"Right.png", 0, 649, 1, 120, 120));
-		background.add(new Obstacle("file:src/p4_group_8_repo/truck1"+"Right.png", 300, 649, 1, 120, 120));
-		background.add(new Obstacle("file:src/p4_group_8_repo/truck1"+"Right.png", 600, 649, 1, 120, 120));
-		background.add(new Obstacle("file:src/p4_group_8_repo/car1Left.png", 100, 597, -1, 50, 50));
-		background.add(new Obstacle("file:src/p4_group_8_repo/car1Left.png", 250, 597, -1, 50, 50));
-		background.add(new Obstacle("file:src/p4_group_8_repo/car1Left.png", 400, 597, -1, 50, 50));
-		background.add(new Obstacle("file:src/p4_group_8_repo/car1Left.png", 550, 597, -1, 50, 50));
-		background.add(new Obstacle("file:src/p4_group_8_repo/truck2Right.png", 0, 540, 1, 200, 200));
-		background.add(new Obstacle("file:src/p4_group_8_repo/truck2Right.png", 500, 540, 1, 200, 200));
-		background.add(new Obstacle("file:src/p4_group_8_repo/car1Left.png", 500, 490, -5, 50, 50));
+		background.add(new Obstacle("file:src/main/java/COMP2042_CW_angjiahau/truck1"+"Right.png", 0, 649, 1, 120, 120));
+		background.add(new Obstacle("file:src/main/java/COMP2042_CW_angjiahau/truck1"+"Right.png", 300, 649, 1, 120, 120));
+		background.add(new Obstacle("file:src/main/java/COMP2042_CW_angjiahau/truck1"+"Right.png", 600, 649, 1, 120, 120));
+		background.add(new Obstacle("file:src/main/java/COMP2042_CW_angjiahau/car1Left.png", 100, 597, -1, 50, 50));
+		background.add(new Obstacle("file:src/main/java/COMP2042_CW_angjiahau/car1Left.png", 250, 597, -1, 50, 50));
+		background.add(new Obstacle("file:src/main/java/COMP2042_CW_angjiahau/car1Left.png", 400, 597, -1, 50, 50));
+		background.add(new Obstacle("file:src/main/java/COMP2042_CW_angjiahau/car1Left.png", 550, 597, -1, 50, 50));
+		background.add(new Obstacle("file:src/main/java/COMP2042_CW_angjiahau/truck2Right.png", 0, 540, 1, 200, 200));
+		background.add(new Obstacle("file:src/main/java/COMP2042_CW_angjiahau/truck2Right.png", 500, 540, 1, 200, 200));
+		background.add(new Obstacle("file:src/main/java/COMP2042_CW_angjiahau/car1Left.png", 500, 490, -5, 50, 50));
 		background.add(new Digit(0, 30, 360, 25));
 		background.start();
 		primaryStage.setScene(scene);

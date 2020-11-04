@@ -6,8 +6,11 @@
  * User Manual available at https://docs.gradle.org/6.0/userguide/java_library_plugin.html
  */
 
+
+
 plugins {
     // Apply the java-library plugin to add support for Java Library
+    id 'java'
     id 'java-library'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.9'
@@ -30,11 +33,12 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-application{
-	mainClass='COMP2042_CW_angjiahau.main'
+javafx{
+	version ='15'
+	modules = ['javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.media']	
 	}
 	
-mainClassName = 'COMP2042_CW_angjiahau.main'
 
+mainClassName = 'COMP2042_CW_angjiahau.Main'
 
 

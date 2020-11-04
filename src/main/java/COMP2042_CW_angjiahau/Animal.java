@@ -1,4 +1,4 @@
-package p4_group_8_repo;
+package COMP2042_CW_angjiahau;
 
 import java.util.ArrayList;
 
@@ -36,14 +36,14 @@ public class Animal extends Actor {
 		setImage(new Image(imageLink, imgSize, imgSize, true, true));
 		setX(300);
 		setY(679.8+movement);
-		imgW1 = new Image("file:src/p4_group_8_repo/froggerUp.png", imgSize, imgSize, true, true);
-		imgA1 = new Image("file:src/p4_group_8_repo/froggerLeft.png", imgSize, imgSize, true, true);
-		imgS1 = new Image("file:src/p4_group_8_repo/froggerDown.png", imgSize, imgSize, true, true);
-		imgD1 = new Image("file:src/p4_group_8_repo/froggerRight.png", imgSize, imgSize, true, true);
-		imgW2 = new Image("file:src/p4_group_8_repo/froggerUpJump.png", imgSize, imgSize, true, true);
-		imgA2 = new Image("file:src/p4_group_8_repo/froggerLeftJump.png", imgSize, imgSize, true, true);
-		imgS2 = new Image("file:src/p4_group_8_repo/froggerDownJump.png", imgSize, imgSize, true, true);
-		imgD2 = new Image("file:src/p4_group_8_repo/froggerRightJump.png", imgSize, imgSize, true, true);
+		imgW1 = new Image("file:src/main/java/COMP2042_CW_angjiahau/froggerUp.png", imgSize, imgSize, true, true);
+		imgA1 = new Image("file:src/main/java/COMP2042_CW_angjiahau/froggerLeft.png", imgSize, imgSize, true, true);
+		imgS1 = new Image("file:src/main/java/COMP2042_CW_angjiahau/froggerDown.png", imgSize, imgSize, true, true);
+		imgD1 = new Image("file:src/main/java/COMP2042_CW_angjiahau/froggerRight.png", imgSize, imgSize, true, true);
+		imgW2 = new Image("file:src/main/java/COMP2042_CW_angjiahau/froggerUpJump.png", imgSize, imgSize, true, true);
+		imgA2 = new Image("file:src/main/java/COMP2042_CW_angjiahau/froggerLeftJump.png", imgSize, imgSize, true, true);
+		imgS2 = new Image("file:src/main/java/COMP2042_CW_angjiahau/froggerDownJump.png", imgSize, imgSize, true, true);
+		imgD2 = new Image("file:src/main/java/COMP2042_CW_angjiahau/froggerRightJump.png", imgSize, imgSize, true, true);
 		
 		
 		

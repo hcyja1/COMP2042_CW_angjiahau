@@ -2,30 +2,16 @@ package COMP2042_CW_angjiahau;
 
 import java.io.File;
 
+
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
-public class MyStage extends World{
+public class Music {
 	MediaPlayer mediaPlayer;
-	@Override
-	public void act(long now) {
-		
-	}
 	
-	public MyStage() {
+	public Music() {
 		
-//		mediaPlayer.play();
-//		mediaPlayer.setOnEndOfMedia(new Runnable() {
-//
-//			@Override
-//			public void run() {
-//				mediaPlayer.seek(Duration.ZERO);
-//				
-//			}
-//			
-//		});
-//		mediaPlayer.play();
 	}
 	
 	public void playMusic() {

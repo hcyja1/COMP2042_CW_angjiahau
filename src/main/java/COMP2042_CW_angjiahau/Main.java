@@ -14,11 +14,14 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import COMP2042_CW_angjiahau.Levels.Level;
 
 public class Main extends Application {
 	AnimationTimer timer;
-	MyStage background;
+	Level background;
 	Animal animal;
+	Music music;
+	
 	public static void main(String[] args) {
 		launch(args);
 		
@@ -26,7 +29,8 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-	    background = new MyStage();
+	    background = new Level();
+	    music = new Music();
 	    Scene scene  = new Scene(background,600,800);
 	    
 	    primaryStage.setResizable(false);
@@ -84,7 +88,7 @@ public class Main extends Application {
             	}
             	if (animal.getStop()) {
             		System.out.print("STOPP:");
-            		background.stopMusic();
+            		music.stopMusic();
             		stop();
             		background.stop();
             		Alert alert = new Alert(AlertType.INFORMATION);
@@ -97,7 +101,7 @@ public class Main extends Application {
         };
     }
 	public void start() {
-		background.playMusic();
+		music.playMusic();
     	createTimer();
         timer.start();
     }

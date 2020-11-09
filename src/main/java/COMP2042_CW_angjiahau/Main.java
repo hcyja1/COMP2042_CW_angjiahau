@@ -114,6 +114,7 @@ public class Main extends Application {
     }
 	public void start() {
 		music.playMusic();
+		
     	createTimer();
         timer.start();
     }

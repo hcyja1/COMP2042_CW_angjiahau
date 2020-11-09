@@ -11,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 
 
 public class Animal extends Actor {
+	Music music = new Music();
 	public static String FROG_RESOURCE_PATH = RESOURCE_PATH + "frog/";
 	int points = 0;
 	int end = 0;
@@ -46,26 +47,33 @@ public class Animal extends Actor {
 		
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event){
+				
+				
+				
 				if (noMove) {
 					
 				}
 				else {
+					music.hopSound();
 				if (second) {
 					if (event.getCode() == KeyCode.W) {	  
 		                move(0, -movement);
 		                changeScore = false;
 		                setImage(imgW1);
 		                second = false;
+		                
 		            }
 		            else if (event.getCode() == KeyCode.A) {	            	
 		            	 move(-movementX, 0);
 		            	 setImage(imgA1);
 		            	 second = false;
+		            	
 		            }
 		            else if (event.getCode() == KeyCode.S) {	            	
 		            	 move(0, movement);
 		            	 setImage(imgS1);
 		            	 second = false;
+		            	 
 		            }
 		            else if (event.getCode() == KeyCode.D) {	            	
 		            	 move(movementX, 0);
@@ -145,6 +153,7 @@ public class Animal extends Actor {
 			move(movement*2, 0);
 		}
 		if (carDeath) {
+			music.squashSound();
 			noMove = true;
 			if ((now)% 11 ==0) {
 				carD++;
@@ -174,6 +183,7 @@ public class Animal extends Actor {
 		}
 		if (waterDeath) {
 			noMove = true;
+			music.plunkSound();
 			if ((now)% 11 ==0) {
 				carD++;
 			}

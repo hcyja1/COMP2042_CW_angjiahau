@@ -1,18 +1,21 @@
 package COMP2042_CW_angjiahau;
 
 import javafx.scene.image.Image;
+import static COMP2042_CW_angjiahau.Main.RESOURCE_PATH;
 
 public class BackgroundImage extends Actor{
-
+	public static final String IMAGE_RESOURCE_PATH = RESOURCE_PATH + "misc/";
 	@Override
 	public void act(long now) {
 		
 		
 	}
 	
-	public BackgroundImage(String imageLink) {
-		setImage(new Image(imageLink, 600, 800, false, false));
+	public BackgroundImage(String imageName) {
+		setImage(new Image(IMAGE_RESOURCE_PATH + imageName + ".png", 600, 800, false, false));
 		
 	}
+	
+	
 
 }

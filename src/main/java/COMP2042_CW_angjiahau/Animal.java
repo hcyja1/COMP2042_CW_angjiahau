@@ -1,4 +1,5 @@
 package COMP2042_CW_angjiahau;
+import static COMP2042_CW_angjiahau.Main.RESOURCE_PATH;
 
 import java.util.ArrayList;
 
@@ -10,14 +11,7 @@ import javafx.scene.input.KeyEvent;
 
 
 public class Animal extends Actor {
-	Image imgW1;
-	Image imgA1;
-	Image imgS1;
-	Image imgD1;
-	Image imgW2;
-	Image imgA2;
-	Image imgS2;
-	Image imgD2;
+	public static String FROG_RESOURCE_PATH = RESOURCE_PATH + "frog/";
 	int points = 0;
 	int end = 0;
 	private boolean second = false;
@@ -32,18 +26,21 @@ public class Animal extends Actor {
 	int carD = 0;
 	double w = 800;
 	ArrayList<End> inter = new ArrayList<End>();
-	public Animal(String imageLink) {
-		setImage(new Image(imageLink, imgSize, imgSize, true, true));
+	
+	public Animal(String animalImage) {
+		setImage(new Image(FROG_RESOURCE_PATH + animalImage + ".png", imgSize, imgSize, true, true));
 		setX(300);
 		setY(679.8+movement);
-		imgW1 = new Image("file:src/main/resources/frog/froggerUp.png", imgSize, imgSize, true, true);
-		imgA1 = new Image("file:src/main/resources/frog/froggerLeft.png", imgSize, imgSize, true, true);
-		imgS1 = new Image("file:src/main/resources/frog/froggerDown.png", imgSize, imgSize, true, true);
-		imgD1 = new Image("file:src/main/resources/frog/froggerRight.png", imgSize, imgSize, true, true);
-		imgW2 = new Image("file:src/main/resources/frog/froggerUpJump.png", imgSize, imgSize, true, true);
-		imgA2 = new Image("file:src/main/resources/frog/froggerLeftJump.png", imgSize, imgSize, true, true);
-		imgS2 = new Image("file:src/main/resources/frog/froggerDownJump.png", imgSize, imgSize, true, true);
-		imgD2 = new Image("file:src/main/resources/frog/froggerRightJump.png", imgSize, imgSize, true, true);
+		
+		
+		Image imgW1 = new Image("file:src/main/resources/frog/froggerUp.png", imgSize, imgSize, true, true);
+		Image imgA1 = new Image("file:src/main/resources/frog/froggerLeft.png", imgSize, imgSize, true, true);
+		Image imgS1 = new Image("file:src/main/resources/frog/froggerDown.png", imgSize, imgSize, true, true);
+		Image imgD1 = new Image("file:src/main/resources/frog/froggerRight.png", imgSize, imgSize, true, true);
+		Image imgW2 = new Image("file:src/main/resources/frog/froggerUpJump.png", imgSize, imgSize, true, true);
+		Image imgA2 = new Image("file:src/main/resources/frog/froggerLeftJump.png", imgSize, imgSize, true, true);
+		Image imgS2 = new Image("file:src/main/resources/frog/froggerDownJump.png", imgSize, imgSize, true, true);
+		Image imgD2 = new Image("file:src/main/resources/frog/froggerRightJump.png", imgSize, imgSize, true, true);
 		
 		
 		

@@ -1,13 +1,17 @@
 package COMP2042_CW_angjiahau;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;
 
 import java.util.ArrayList;
 
 
-public abstract class Actor extends ImageView{
 
+public abstract class Actor extends ImageView{
+	
+	
+	
     public void move(double dx, double dy) {
         setX(getX() + dx);
         setY(getY() + dy);

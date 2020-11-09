@@ -1,8 +1,9 @@
 package COMP2042_CW_angjiahau;
-
+import static COMP2042_CW_angjiahau.Main.RESOURCE_PATH;
 import javafx.scene.image.Image;
 
 public class Obstacle extends Actor {
+	private static final String OBSTACLE_RESOURCE_PATH = RESOURCE_PATH+"obstacles";
 	private int speed;
 	@Override
 	public void act(long now) {
@@ -13,8 +14,8 @@ public class Obstacle extends Actor {
 			setX(600);
 	}
 	
-	public Obstacle(String imageLink, int xpos, int ypos, int s, int w, int h) {
-		setImage(new Image(imageLink, w,h, true, true));
+	public Obstacle(int xpos, int ypos, int s, int w, int h, String type) {
+		setImage(new Image(OBSTACLE_RESOURCE_PATH+"/"+type+".png", w,h, true, true));
 		setX(xpos);
 		setY(ypos);
 		speed = s;

@@ -25,123 +25,128 @@ public class Animal extends Actor {
 	boolean stop = false;
 	boolean changeScore = false;
 	int carD = 0;
+	int waterD=0;
 	double w = 800;
-	ArrayList<End> inter = new ArrayList<End>();
 	
+	
+	ArrayList<End> inter = new ArrayList<End>(); 
+
 	public Animal(String animalImage) {
 		setImage(new Image(FROG_RESOURCE_PATH + animalImage + ".png", imgSize, imgSize, true, true));
 		setX(300);
 		setY(679.8+movement);
 		
 		
-		Image imgW1 = new Image("file:src/main/resources/frog/froggerUp.png", imgSize, imgSize, true, true);
-		Image imgA1 = new Image("file:src/main/resources/frog/froggerLeft.png", imgSize, imgSize, true, true);
-		Image imgS1 = new Image("file:src/main/resources/frog/froggerDown.png", imgSize, imgSize, true, true);
-		Image imgD1 = new Image("file:src/main/resources/frog/froggerRight.png", imgSize, imgSize, true, true);
-		Image imgW2 = new Image("file:src/main/resources/frog/froggerUpJump.png", imgSize, imgSize, true, true);
-		Image imgA2 = new Image("file:src/main/resources/frog/froggerLeftJump.png", imgSize, imgSize, true, true);
-		Image imgS2 = new Image("file:src/main/resources/frog/froggerDownJump.png", imgSize, imgSize, true, true);
-		Image imgD2 = new Image("file:src/main/resources/frog/froggerRightJump.png", imgSize, imgSize, true, true);
+		Image imgW1 = new Image(FROG_RESOURCE_PATH + "froggerUp.png", imgSize, imgSize, true, true);
+		Image imgA1 = new Image(FROG_RESOURCE_PATH + "froggerLeft.png", imgSize, imgSize, true, true);
+		Image imgS1 = new Image(FROG_RESOURCE_PATH + "froggerDown.png", imgSize, imgSize, true, true);
+		Image imgD1 = new Image(FROG_RESOURCE_PATH + "froggerRight.png", imgSize, imgSize, true, true);
+		Image imgW2 = new Image(FROG_RESOURCE_PATH + "froggerUpJump.png", imgSize, imgSize, true, true);
+		Image imgA2 = new Image(FROG_RESOURCE_PATH + "froggerLeftJump.png", imgSize, imgSize, true, true);
+		Image imgS2 = new Image(FROG_RESOURCE_PATH + "froggerDownJump.png", imgSize, imgSize, true, true);
+		Image imgD2 = new Image(FROG_RESOURCE_PATH + "froggerRightJump.png", imgSize, imgSize, true, true);
 		
 		
 		
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
-			public void handle(KeyEvent event){
+		
+			public void handle(KeyEvent event){		
 				
-				
-				
-				if (noMove) {
-					
-				}
+				if(noMove) {					
+				} 			
 				else {
 					music.hopSound();
-				if (second) {
-					if (event.getCode() == KeyCode.W) {	  
-		                move(0, -movement);
-		                changeScore = false;
-		                setImage(imgW1);
-		                second = false;
-		                
-		            }
-		            else if (event.getCode() == KeyCode.A) {	            	
-		            	 move(-movementX, 0);
-		            	 setImage(imgA1);
-		            	 second = false;
-		            	
-		            }
-		            else if (event.getCode() == KeyCode.S) {	            	
-		            	 move(0, movement);
-		            	 setImage(imgS1);
-		            	 second = false;
-		            	 
-		            }
-		            else if (event.getCode() == KeyCode.D) {	            	
-		            	 move(movementX, 0);
-		            	 setImage(imgD1);
-		            	 second = false;
-		            }
-				}
-				else if (event.getCode() == KeyCode.W) {	            	
-	                move(0, -movement);
-	                setImage(imgW2);
-	                second = true;
-	            }
-	            else if (event.getCode() == KeyCode.A) {	            	
-	            	 move(-movementX, 0);
-	            	 setImage(imgA2);
-	            	 second = true;
-	            }
-	            else if (event.getCode() == KeyCode.S) {	            	
-	            	 move(0, movement);
-	            	 setImage(imgS2);
-	            	 second = true;
-	            }
-	            else if (event.getCode() == KeyCode.D) {	            	
-	            	 move(movementX, 0);
-	            	 setImage(imgD2);
-	            	 second = true;
-	            }
-	        }
-			}
-		});	
-
-
-
-		setOnKeyReleased(new EventHandler<KeyEvent>() {
-			public void handle(KeyEvent event) {
-				if (noMove) {}
-				else {
-				if (event.getCode() == KeyCode.W) {	  
+								
+					switch(event.getCode()) {
+						
+					case UP:
+					case W :						
+							move(0, -movement);
+							changeScore = false;
+							setImage(second ? imgW1 : imgW2);
+							break;
+					case LEFT:		               					    
+					case A :					
+						move(-movementX, 0);
+						changeScore = false;
+						setImage(second ? imgA1 : imgA2);
+						break;
+						
+					case DOWN:		           					
+					case S : 					
+						move(0, movement);
+						changeScore = false;
+						setImage(second ? imgS1 : imgS2);
+						break;
+					
+					case RIGHT:
+					case D : 				 	
+						move(movementX, 0);
+						changeScore = false;
+						setImage(second ? imgD1 : imgD2);
+						break;
+						
+					default:
+						break;							
+							}
+					
+					second = !second;
+						}
+					}
+			});
+			
+	
+	setOnKeyReleased(new EventHandler<KeyEvent>() {
+		
+		public void handle(KeyEvent event){		
+			
+			if(noMove) {					
+			} 			
+			else {
+				music.hopSound();							
+				switch(event.getCode()) {
+				
+				case UP:
+				case W :					
+					move(0, -movement);
+	                setImage(imgW1);
+	                second = false;	                
 					if (getY() < w) {
 						changeScore = true;
 						w = getY();
 						points+=10;
 					}
-	                move(0, -movement);
-	                setImage(imgW1);
-	                second = false;
-	            }
-	            else if (event.getCode() == KeyCode.A) {	            	
-	            	 move(-movementX, 0);
+					break;
+	             
+				case LEFT:
+				case A :					
+					 move(-movementX, 0);
 	            	 setImage(imgA1);
 	            	 second = false;
-	            }
-	            else if (event.getCode() == KeyCode.S) {	            	
-	            	 move(0, movement);
+	            	 break;
+				
+				case DOWN:
+				case S : 					
+					move(0, movement);
 	            	 setImage(imgS1);
 	            	 second = false;
-	            }
-	            else if (event.getCode() == KeyCode.D) {	            	
-	            	 move(movementX, 0);
+	            	 break;
+				
+				case RIGHT:
+				case D : 				 	
+					 move(movementX, 0);
 	            	 setImage(imgD1);
 	            	 second = false;
-	            }
-	        }
-			}
-			
-		});
-	}
-	
+	            	 break;
+					
+				default:
+						break;						
+						}
+					}
+				}
+		});	
+}
+
 	@Override
 	public void act(long now) {
 		int bounds = 0;
@@ -152,67 +157,55 @@ public class Animal extends Actor {
 		if (getX()<0) {
 			move(movement*2, 0);
 		}
+		
+		
+		
 		if (carDeath) {
 			music.squashSound();
 			noMove = true;
-			if ((now)% 11 ==0) {
+			if ((now)% 11 ==0 || carD!=4) {
 				carD++;
+				setImage(new Image(FROG_RESOURCE_PATH + "death_animations/cardeath" +carD+ ".png", imgSize, imgSize, true, true));
 			}
-			if (carD==1) {
-				setImage(new Image("file:src/main/resources/frog/death_animations/cardeath1.png", imgSize, imgSize, true, true));
-			}
-			if (carD==2) {
-				setImage(new Image("file:src/main/resources/frog/death_animations/cardeath2.png", imgSize, imgSize, true, true));
-			}
-			if (carD==3) {
-				setImage(new Image("file:src/main/resources/frog/death_animations/cardeath3.png", imgSize, imgSize, true, true));
-			}
-			if (carD == 4) {
+							
+			if(carD==4) {
 				setX(300);
 				setY(679.8+movement);
 				carDeath = false;
 				carD = 0;
-				setImage(new Image("file:src/main/resources/frog/froggerUp.png", imgSize, imgSize, true, true));
+				setImage(new Image(FROG_RESOURCE_PATH + "froggerUp.png", imgSize, imgSize, true, true));
 				noMove = false;
 				if (points>50) {
 					points-=50;
 					changeScore = true;
-				}
+				}			
 			}
-			
 		}
+					
 		if (waterDeath) {
 			noMove = true;
-			music.plunkSound();
-			if ((now)% 11 ==0) {
+			music.plunkSound();		
+			
+			if ((now)%11==0||carD!=5)  {												
 				carD++;
+				setImage(new Image(FROG_RESOURCE_PATH + "death_animations/waterdeath"+carD+".png", imgSize,imgSize , true, true));	
 			}
-			if (carD==1) {
-				setImage(new Image("file:src/main/resources/frog/death_animations/waterdeath1.png", imgSize,imgSize , true, true));
-			}
-			if (carD==2) {
-				setImage(new Image("file:src/main/resources/frog/death_animations/waterdeath2.png", imgSize,imgSize , true, true));
-			}
-			if (carD==3) {
-				setImage(new Image("file:src/main/resources/frog/death_animations/waterdeath3.png", imgSize,imgSize , true, true));
-			}
-			if (carD == 4) {
-				setImage(new Image("file:src/main/resources/frog/death_animations/waterdeath4.png", imgSize,imgSize , true, true));
-			}
-			if (carD == 5) {
+					
+							
+			if(carD==5) {
 				setX(300);
 				setY(679.8+movement);
 				waterDeath = false;
 				carD = 0;
-				setImage(new Image("file:src/main/resources/frog/froggerUp.png", imgSize, imgSize, true, true));
+				setImage(new Image(FROG_RESOURCE_PATH + "froggerUp.png", imgSize, imgSize, true, true));
 				noMove = false;
-				if (points>50) {
-					points-=50;
-					changeScore = true;
-				}
-			}
-			
-		}
+					if (points>50) {
+							points-=50;
+								changeScore = true;
+							}
+						}				
+		}				
+								
 		
 		if (getX()>600) {
 			move(-movement*2, 0);

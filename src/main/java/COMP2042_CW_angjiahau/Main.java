@@ -70,6 +70,7 @@ public class Main extends Application {
 		
 		//intialize starting main actor image 
 				animal = new Animal("froggerUp");
+				
 				background.add(animal);
 				
 		//add obstacles
@@ -84,8 +85,8 @@ public class Main extends Application {
 		background.add(new Obstacle(500, 540, 1, 200, 200, "truck2Right"));
 		background.add(new Obstacle(500, 490, -5, 50, 50, "car1Left"));
 		
-		
-		background.add(new Digit(0, 30, 550, 25));
+		background.add(new HighScore("hi-scoreImage"));
+		background.add(new Digit(0, 30, 550, 40));
 		background.start();
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -129,7 +130,7 @@ public class Main extends Application {
     		  int d = n / 10;
     		  int k = n - d * 10;
     		  n = d;
-    		  background.add(new Digit(k, 30, 550 - shift, 25));
+    		  background.add(new Digit(k, 30, 550 - shift, 40));
     		  shift+=30;
     		}
     }

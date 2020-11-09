@@ -1,5 +1,5 @@
 package COMP2042_CW_angjiahau;
-import static COMP2042_CW_angjiahau.Main.RESOURCE_PATH;
+import static COMP2042_CW_angjiahau.Main.RESOURCE_PATH; 
 import javafx.scene.image.Image;
 
 public class Obstacle extends Actor {
@@ -20,5 +20,7 @@ public class Obstacle extends Actor {
 		setY(ypos);
 		speed = s;
 	}
+	
+	
 
 }

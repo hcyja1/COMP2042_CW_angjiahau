@@ -11,14 +11,15 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.FlowPane;
+
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+
+
 
 
 public abstract class World extends Pane {
     private AnimationTimer timer;
-    Music music=new Music();
+    Music music = new Music();
     public World() {
     	
     	sceneProperty().addListener(new ChangeListener<Scene>() {
@@ -83,8 +84,9 @@ public abstract class World extends Pane {
     }
     public void start() {
     	createTimer();
+    	music.playMusic();
         timer.start();
-        music.playMusic();
+       
     }
 
     public void stop() {

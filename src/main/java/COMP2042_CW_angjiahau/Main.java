@@ -24,9 +24,7 @@ public class Main extends Application {
 	public static final String RESOURCE_PATH = "file:src/main/resources/";
 	public static void main(String[] args) {
 		launch(args);		
-		long startTime = System.currentTimeMillis();		
-		long endTime = System.currentTimeMillis();
-		System.out.println("Took "+(endTime - startTime) + " ms"); 
+	
 	}
 
 	@Override

@@ -163,7 +163,7 @@ public class Animal extends Actor {
 		if (carDeath) {
 			music.squashSound();
 			noMove = true;
-			if ((now)% 11 ==0 || carD!=4) {
+			if ((now)%11==0&&carD!=4) {
 				carD++;
 				setImage(new Image(FROG_RESOURCE_PATH + "death_animations/cardeath" +carD+ ".png", imgSize, imgSize, true, true));
 			}
@@ -186,17 +186,16 @@ public class Animal extends Actor {
 			noMove = true;
 			music.plunkSound();		
 			
-			if ((now)%11==0||carD!=5)  {												
-				carD++;
-				setImage(new Image(FROG_RESOURCE_PATH + "death_animations/waterdeath"+carD+".png", imgSize,imgSize , true, true));	
+			if ((now)%11==0&&waterD!=5)  {												
+				waterD++;
+				setImage(new Image(FROG_RESOURCE_PATH + "death_animations/waterdeath"+waterD+".png", imgSize,imgSize , true, true));	
 			}
-					
-							
-			if(carD==5) {
+												
+			if(waterD==5) {
 				setX(300);
 				setY(679.8+movement);
 				waterDeath = false;
-				carD = 0;
+				waterD = 0;
 				setImage(new Image(FROG_RESOURCE_PATH + "froggerUp.png", imgSize, imgSize, true, true));
 				noMove = false;
 					if (points>50) {
@@ -204,7 +203,7 @@ public class Animal extends Actor {
 								changeScore = true;
 							}
 						}				
-		}				
+					}				
 								
 		
 		if (getX()>600) {
@@ -265,8 +264,5 @@ public class Animal extends Actor {
 			return true;
 		}
 		return false;
-		
 	}
-	
-
 }

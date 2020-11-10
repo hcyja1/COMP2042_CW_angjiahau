@@ -18,7 +18,7 @@ import javafx.scene.layout.StackPane;
 
 public abstract class World extends Pane {
     private AnimationTimer timer;
-    
+    Music music=new Music();
     public World() {
     	
     	sceneProperty().addListener(new ChangeListener<Scene>() {
@@ -78,10 +78,13 @@ public abstract class World extends Pane {
             }
         };
     }
-
+    public void createTimer(AnimationTimer timer) {
+    	this.timer=timer;
+    }
     public void start() {
     	createTimer();
         timer.start();
+        music.playMusic();
     }
 
     public void stop() {

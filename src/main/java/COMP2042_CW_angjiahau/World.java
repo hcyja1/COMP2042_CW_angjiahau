@@ -19,7 +19,8 @@ import javafx.scene.layout.Pane;
 
 public abstract class World extends Pane {
     private AnimationTimer timer;
-    Music music = new Music();
+    protected boolean switchScene;
+    
     public World() {
     	
     	sceneProperty().addListener(new ChangeListener<Scene>() {
@@ -80,17 +81,24 @@ public abstract class World extends Pane {
         };
     }
     public void createTimer(AnimationTimer timer) {
-    	this.timer=timer;
+    	this.timer=timer;   	
     }
-    public void start() {
+    
+    public void start() {    	
     	createTimer();
-    	music.playMusic();
-        timer.start();
-       
+    	timer.start();
+    	switchScene = false;
+    	
+                  
     }
 
     public void stop() {
-        timer.stop();
+    	switchScene = true;
+    	timer.stop();      	
+    }
+    
+    public boolean switchScene() {
+    	return switchScene;
     }
     
     public void add(Actor actor) {
@@ -112,4 +120,6 @@ public abstract class World extends Pane {
     }
 
     public abstract void act(long now);
+    
+   
 }

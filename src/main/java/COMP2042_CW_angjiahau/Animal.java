@@ -27,8 +27,7 @@ public class Animal extends Actor {
 	int carD = 0;
 	int waterD=0;
 	double w = 800;
-	
-	
+		
 	ArrayList<End> inter = new ArrayList<End>(); 
 
 	public Animal(String animalImage) {
@@ -36,18 +35,11 @@ public class Animal extends Actor {
 		setX(300);
 		setY(679.8+movement);
 		
-		
-		Image imgW1 = new Image(FROG_RESOURCE_PATH + "froggerUp.png", imgSize, imgSize, true, true);
-		Image imgA1 = new Image(FROG_RESOURCE_PATH + "froggerLeft.png", imgSize, imgSize, true, true);
-		Image imgS1 = new Image(FROG_RESOURCE_PATH + "froggerDown.png", imgSize, imgSize, true, true);
-		Image imgD1 = new Image(FROG_RESOURCE_PATH + "froggerRight.png", imgSize, imgSize, true, true);
-		Image imgW2 = new Image(FROG_RESOURCE_PATH + "froggerUpJump.png", imgSize, imgSize, true, true);
-		Image imgA2 = new Image(FROG_RESOURCE_PATH + "froggerLeftJump.png", imgSize, imgSize, true, true);
-		Image imgS2 = new Image(FROG_RESOURCE_PATH + "froggerDownJump.png", imgSize, imgSize, true, true);
-		Image imgD2 = new Image(FROG_RESOURCE_PATH + "froggerRightJump.png", imgSize, imgSize, true, true);
+		Image froggerNoJump = new Image(FROG_RESOURCE_PATH + "froggerUp.png", imgSize, imgSize, true, true);
+		Image froggerJump = new Image(FROG_RESOURCE_PATH + "froggerUpJump.png", imgSize, imgSize, true, true);
 		
 		
-		
+	
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
 		
 			public void handle(KeyEvent event){		
@@ -63,27 +55,33 @@ public class Animal extends Actor {
 					case W :						
 							move(0, -movement);
 							changeScore = false;
-							setImage(second ? imgW1 : imgW2);
+							setImage(second ? froggerNoJump : froggerJump);
+							setRotate(0);
 							break;
+							
 					case LEFT:		               					    
 					case A :					
 						move(-movementX, 0);
 						changeScore = false;
-						setImage(second ? imgA1 : imgA2);
+						setImage(second ? froggerNoJump : froggerJump);
+						setRotate(-90);
 						break;
 						
 					case DOWN:		           					
 					case S : 					
 						move(0, movement);
 						changeScore = false;
-						setImage(second ? imgS1 : imgS2);
+						setImage(second ? froggerNoJump : froggerJump);
+						setRotate(-180);
+						
 						break;
-					
+						
 					case RIGHT:
 					case D : 				 	
 						move(movementX, 0);
 						changeScore = false;
-						setImage(second ? imgD1 : imgD2);
+						setImage(second ? froggerNoJump : froggerJump);
+						setRotate(90);
 						break;
 						
 					default:
@@ -94,8 +92,7 @@ public class Animal extends Actor {
 						}
 					}
 			});
-			
-	
+				
 	setOnKeyReleased(new EventHandler<KeyEvent>() {
 		
 		public void handle(KeyEvent event){		
@@ -109,7 +106,7 @@ public class Animal extends Actor {
 				case UP:
 				case W :					
 					move(0, -movement);
-	                setImage(imgW1);
+	                setImage(froggerNoJump);
 	                second = false;	                
 					if (getY() < w) {
 						changeScore = true;
@@ -121,21 +118,21 @@ public class Animal extends Actor {
 				case LEFT:
 				case A :					
 					 move(-movementX, 0);
-	            	 setImage(imgA1);
+	            	 setImage(froggerNoJump);
 	            	 second = false;
 	            	 break;
 				
 				case DOWN:
 				case S : 					
 					move(0, movement);
-	            	 setImage(imgS1);
+	            	 setImage(froggerNoJump);
 	            	 second = false;
 	            	 break;
 				
 				case RIGHT:
 				case D : 				 	
 					 move(movementX, 0);
-	            	 setImage(imgD1);
+	            	 setImage(froggerNoJump);
 	            	 second = false;
 	            	 break;
 					
@@ -145,6 +142,7 @@ public class Animal extends Actor {
 					}
 				}
 		});	
+		
 }
 
 	@Override
@@ -159,7 +157,7 @@ public class Animal extends Actor {
 		}
 		
 		
-		
+	
 		if (carDeath) {
 			music.squashSound();
 			noMove = true;
@@ -204,7 +202,7 @@ public class Animal extends Actor {
 							}
 						}				
 					}				
-								
+							
 		
 		if (getX()>600) {
 			move(-movement*2, 0);
@@ -250,8 +248,9 @@ public class Animal extends Actor {
 			
 		}
 	}
+	
 	public boolean getStop() {
-		return end==5;
+		return end==1;
 	}
 	
 	public int getPoints() {

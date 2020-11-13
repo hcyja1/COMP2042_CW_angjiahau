@@ -7,6 +7,7 @@ import COMP2042_CW_angjiahau.End;
 import COMP2042_CW_angjiahau.HighScore;
 import COMP2042_CW_angjiahau.Log;
 import COMP2042_CW_angjiahau.Obstacle;
+import COMP2042_CW_angjiahau.StageController;
 import COMP2042_CW_angjiahau.Turtle;
 import COMP2042_CW_angjiahau.WetTurtle;
 import COMP2042_CW_angjiahau.World;
@@ -18,10 +19,12 @@ import java.io.File;
 import java.util.List;
 
 
-public class Level1 extends World {
+public class MainLevel extends Level {
 	 Animal animal;
+	 StageController stageController;
+	 World world;
 	 
-	public Level1()  {
+	public MainLevel()  {
 		//add background image
 				BackgroundImage froggerback = new BackgroundImage("iKogsKW");
 				add(froggerback);
@@ -31,7 +34,7 @@ public class Level1 extends World {
 				add(new Log(150, 0, 166, 0.75,3) );		
 				add(new Log(150, 220, 166, 0.75,3) );
 				add(new Log(150, 440, 166, 0.74,3) );
-				add(new Log(150, 0, 276, -2,1) );
+				add(new Log(300, 0, 276, -2,1) );
 				add(new Log(300, 400, 276, -2,1) );
 				add(new Log(150, 50, 329, 0.75,3) );
 				add(new Log(150, 270, 329, 0.75,3) );
@@ -54,6 +57,7 @@ public class Level1 extends World {
 				//intialize starting main actor image 
 				animal = new Animal("froggerUp");						
 				add(animal);
+				
 						
 				//add obstacles
 				add(new Obstacle(0, 649, 1, 120, 120, "truck1Right"));
@@ -69,55 +73,23 @@ public class Level1 extends World {
 				
 				
 				add(new Digit(0, 30, 550, 40));
-				add(new HighScore("hi-scoreImage"));
-						
+				add(new HighScore("hi-scoreImage"));						
 	}
 	
-	
-	@Override
 	public void act(long now) {
-			
+		if (animal.changeScore()) {
+			setNumber(animal.getPoints());
+		}
+		if (animal.getStop()) {
+			System.out.print("STOPP:");
+			stop();
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("You Have Won The Game!");
+			alert.setHeaderText("Your High Score: "+animal.getPoints()+"!");
+			alert.setContentText("Highest Possible Score: 800");
+			alert.show();
+		}
 	}
 	
-	 @Override
-	    public void createTimer() {
-		 super.createTimer(new AnimationTimer() {
-	            @Override
-	            public void handle(long now) {
-	                act(now);
-	                List<Actor> actors = getObjects(Actor.class);
-
-	                for (Actor anActor: actors) {
-	                    anActor.act(now);
-	                }
-	               
-					if (animal.changeScore()) {
-	                    setNumber(animal.getPoints());
-	                }
-	                if (animal.getStop()) {
-	                    System.out.print("STOPP:");
-	                    stop();
-	                    stop();
-	                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-	                    alert.setTitle("You Have Won The Game!");
-	                    alert.setHeaderText("Your High Score: "+animal.getPoints()+"!");
-	                    alert.setContentText("Highest Possible Score: 800");
-	                    alert.show();
-	                }
-	            }
-	        });
-	 }
-	        public void setNumber(int n) {
-	            int shift = 0;
-	            while (n > 0) {
-	                int d = n / 10;
-	                int k = n - d * 10;
-	                n = d;
-	                add(new Digit(k, 30, 550 - shift, 40));
-	                shift+=30;
-	            }
-	    }
-	        
-	     
-	        
+	       
 }

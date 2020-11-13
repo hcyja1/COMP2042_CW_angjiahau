@@ -1,47 +1,81 @@
 package COMP2042_CW_angjiahau;
 
 import java.io.File;
-
 import java.util.List;
-
+import COMP2042_CW_angjiahau.Animal;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.text.Text;
+import javafx.scene.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import COMP2042_CW_angjiahau.Levels.Level1;
+import COMP2042_CW_angjiahau.Levels.*;
 
 public class Main extends Application {
-	AnimationTimer timer;
-	Level1 level1;
-	Animal animal;
 	Music music;
+	AnimationTimer timer;
+	MainLevel mainLevel;
+	Level2 level2;
+	Animal animal;
+	Scene scene;
+	StageController stageController;
+	World world;
 	public static final String RESOURCE_PATH = "file:src/main/resources/";
+	
+	
 	public static void main(String[] args) {
-		launch(args);		
-	
+		launch(args);				
 	}
-
-	@Override
-	public void start(Stage primaryStage) throws Exception {
 		
-	   Level1 level1 = new Level1();	    
-	    Scene scene  = new Scene(level1,600,800);
-	   	    
-	    //make window unresizable
-	    primaryStage.setResizable(false);
-				
-		level1.start();
-		primaryStage.setScene(scene);
-		primaryStage.show();
-		 
+	@Override
+	public void start(Stage firstStage) throws Exception {
+		//add existing levels
+	
+		mainLevel = new MainLevel();
+	    level2 = new Level2();	  
+	    music = new Music();
+	    scene  = new Scene(mainLevel,600,800);   
+	    StageController stageController = new StageController(2,scene);	 
+	    stageController.addScreen("MainLevel", mainLevel);		   
+	    stageController.activate("MainLevel");	  
+	    stageController.startScene();
+	    
+	    
+	      
+		 //make window unresizable & start
+	    firstStage.setResizable(false);   
+	    firstStage.setScene(scene);
+	    firstStage.show();
+	    start();
+	    
+		
 	}
 	
+	
+	public void createTimer() {
+        timer = new AnimationTimer() {      
+        	
+         @Override            
+          public void handle(long now) {     
+        	if(scene.getRoot() == mainLevel && mainLevel.switchScene()) {
+        		stageController.changeScene("Level2", level2);
+        	}
+            	 
+            }
+        };
+    }
+	
+	
+	public void start() {
+		createTimer();
+		timer.start();
+		music.playMusic();
+		
+	}
+	
+	public void stop() {
+		
+		timer.stop();
+	}
 	
     
    

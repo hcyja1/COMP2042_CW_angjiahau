@@ -27,7 +27,7 @@ public class Animal extends Actor {
 	int carD = 0;
 	int waterD=0;
 	double w = 800;
-		
+	double waterLevel =0;
 	ArrayList<End> inter = new ArrayList<End>(); 
 
 	public Animal(String animalImage) {
@@ -156,8 +156,7 @@ public class Animal extends Actor {
 			move(movement*2, 0);
 		}
 		
-		
-	
+			
 		if (carDeath) {
 			music.squashSound();
 			noMove = true;
@@ -243,12 +242,21 @@ public class Animal extends Actor {
 			setX(300);
 			setY(679.8+movement);
 		}
-		else if (getY()<413){
-			waterDeath = true;
-			
-		}
+		
+		else if (getY()<waterLevel){
+			waterDeath = true;			
+		} 
+		
 	}
-	
+	public void waterLevel(int waterLevel) {
+		this.waterLevel = waterLevel;
+	}
+	public boolean waterDeath() {		
+		return waterDeath;
+	}
+	public boolean nowaterDeath() {		
+		return waterDeath = false;
+	}
 	public boolean getStop() {
 		return end==1;
 	}
@@ -263,5 +271,12 @@ public class Animal extends Actor {
 			return true;
 		}
 		return false;
+	}
+	
+	public void reset() {
+		setX(300);
+		setY(679.8 + movement);
+		end = 0;
+		points = 0;
 	}
 }

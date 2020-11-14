@@ -18,7 +18,10 @@ public class Obstacle extends Actor {
 		setImage(new Image(OBSTACLE_RESOURCE_PATH+"/"+type+".png", w,h, true, true));
 		setX(xpos);
 		setY(ypos);
-		speed = s;
+		speed=s;
+		if(s<0) {
+		setRotate(180);
+		}
 	}
 	
 	

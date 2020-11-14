@@ -20,6 +20,7 @@ import javafx.scene.layout.Pane;
 public abstract class World extends Pane {
     private AnimationTimer timer;
     protected boolean switchScene;
+   
     
     public World() {
     	
@@ -112,6 +113,8 @@ public abstract class World extends Pane {
     public void remove(Actor actor) {
         getChildren().remove(actor);
     }
+    
+   
 
     public <A extends Actor> List<A> getObjects(Class<A> cls) {
         ArrayList<A> someArray = new ArrayList<A>();

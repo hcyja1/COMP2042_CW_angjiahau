@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 import static COMP2042_CW_angjiahau.Main.RESOURCE_PATH;
 
 public class BackgroundImage extends Actor{
-	public static final String IMAGE_RESOURCE_PATH = RESOURCE_PATH + "misc/";
+	public static final String IMAGE_RESOURCE_PATH = RESOURCE_PATH + "levels/";
 	@Override
 	public void act(long now) {
 		

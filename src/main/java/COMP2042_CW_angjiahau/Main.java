@@ -17,10 +17,13 @@ public class Main extends Application {
 	StartingScreen startingscreen;
 	Music music;
 	AnimationTimer timer;
-	MainLevel mainLevel;
+	StartingScreen startingScreen;
+	InfoScreen infoScreen;
+	Level1 level1;
 	Level2 level2;
 	Level3 level3;
 	Level4 level4;
+	Level5 level5;
 	Animal animal;
 	Scene scene;
 	StageController stageController;
@@ -35,19 +38,28 @@ public class Main extends Application {
 	@Override
 	public void start(Stage firstStage) throws Exception {
 		//add existing levels
-		startingscreen = new StartingScreen();
-		mainLevel = new MainLevel();
+		startingScreen =  new StartingScreen();
+		infoScreen = new InfoScreen();
+		level1 = new Level1();
 	    level2 = new Level2();	  
 	    level3 = new Level3();
 	    level4 = new Level4();
+	    level5 = new Level5();
 	    music = new Music();
-	    scene  = new Scene(level4,600,800);   
-	    stageController = new StageController(4,scene);
-	    stageController.addScreen("MainLevel", mainLevel);
+	    
+	    scene  = new Scene(level1,600,800);   
+	    stageController = new StageController(6,scene);
+	    
+	   
+	    stageController.addScreen("StartingScreen", startingScreen);	
+	    stageController.addScreen("InfoScreen",infoScreen);        
+	    stageController.addScreen("Level1", level1);	
 	    stageController.addScreen("Level2", level2);
 	    stageController.addScreen("Level3", level3);	
 	    stageController.addScreen("Level4", level4);
-	    stageController.activate("Level4");	  
+	    stageController.addScreen("Level5", level5);	
+	    
+	    stageController.activate("StartingScreen");
 	    stageController.startScene();
 
 		 //make window unresizable & start
@@ -65,12 +77,20 @@ public class Main extends Application {
         	
          @Override            
           public void handle(long now) {
+        	 if (scene.getRoot() == startingScreen && startingScreen.startGame()) {
+					stageController.changeScene("Level1",level1);
+					startingScreen.resetStartGame();
+				}	
+        	 
          	for (Map.Entry<String, World> entry : stageController.getScreenMap().entrySet()) {
          		if (entry.getValue().switchScene()) {
          			entry.getValue().resetSwitchScene();
          			stageController.nextScene(entry.getKey());
+				} 
+         		
+            		
+    					
 				}
-			}
          }
         };
     }
@@ -83,8 +103,7 @@ public class Main extends Application {
 		
 	}
 	
-	public void stop() {
-		
+	public void stop() {	
 		timer.stop();
 	}
 	

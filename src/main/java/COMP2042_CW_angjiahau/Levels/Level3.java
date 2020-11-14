@@ -64,6 +64,7 @@ public class Level3 extends Level {
 				add(new Obstacle(400, 380, 4, 50, 50, "racecar"));
 				add(new Obstacle(50, 380, 4, 50, 50, "racecar"));
 				
+				animal.waterLevel(300);
 				
 				add(new Digit(0, 30, 550, 40));
 				add(new HighScore("hi-scoreImage"));						
@@ -73,7 +74,7 @@ public class Level3 extends Level {
 	@Override
 	public void act(long now) {
 		
-		animal.waterLevel(300);
+		
 		
 		if (animal.changeScore()) {
 			setNumber(animal.getPoints());
@@ -89,9 +90,13 @@ public class Level3 extends Level {
 		}
 		
 		
-		
 	}
 	        
+	@Override
+	public void start() {
+		super.start();
+		animal.reset();
+	}
 	
 	     
 	        

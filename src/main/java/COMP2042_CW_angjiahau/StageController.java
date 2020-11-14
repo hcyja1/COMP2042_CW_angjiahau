@@ -1,5 +1,5 @@
 package COMP2042_CW_angjiahau;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
@@ -10,14 +10,12 @@ import COMP2042_CW_angjiahau.Levels.*;
 
 public class StageController extends World {
 	
-	Level2 level2;
-	World world;
-	 private HashMap<String, World> screenMap;
+	 private LinkedHashMap<String, World> screenMap;
 	    private Scene scene;
 	  
 
 	    public StageController(int numWorld,Scene scene) {
-	    	screenMap = new HashMap<>(numWorld);
+	    	screenMap = new LinkedHashMap<>(numWorld);
 	        this.scene=scene;
 	    }
 
@@ -53,11 +51,12 @@ public class StageController extends World {
 
 		public void nextScene(String key) {
 			List<String> list = new ArrayList<>(screenMap.keySet());
-			scene.setRoot(screenMap.get(list.get((list.indexOf(key) + 1) % list.size())));
+			scene.setRoot(screenMap.get(list.get((list.indexOf(key) + 1) % (list.size()))));
 			startScene();
 		}
+		
 
-		public HashMap<String, World> getScreenMap() {
+		public LinkedHashMap<String, World> getScreenMap() {
 			return screenMap;
 		}
 		

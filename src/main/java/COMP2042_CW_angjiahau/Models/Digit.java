@@ -1,8 +1,9 @@
-package COMP2042_CW_angjiahau;
+package COMP2042_CW_angjiahau.Models;
 
+import COMP2042_CW_angjiahau.Controllers.Actor;
 import javafx.scene.image.Image;
 
-public class Digit extends Actor{
+public class Digit extends Actor {
 	int dim;
 	Image im1;
 	@Override

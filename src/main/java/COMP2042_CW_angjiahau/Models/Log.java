@@ -1,5 +1,6 @@
-package COMP2042_CW_angjiahau;
+package COMP2042_CW_angjiahau.Models;
 
+import COMP2042_CW_angjiahau.Controllers.Actor;
 import javafx.scene.image.Image;
 import static COMP2042_CW_angjiahau.Main.RESOURCE_PATH;
 
@@ -20,7 +21,10 @@ public class Log extends Actor {
 		setX(xpos);
 		setY(ypos);
 		speed = s;
-		
+	}
+
+	public double getSpeed(){
+		return speed;
 	}
 	public boolean getLeft() {
 		return speed < 0;

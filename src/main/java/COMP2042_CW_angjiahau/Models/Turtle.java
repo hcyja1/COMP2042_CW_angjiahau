@@ -1,12 +1,16 @@
-package COMP2042_CW_angjiahau;
+package COMP2042_CW_angjiahau.Models;
 
+import COMP2042_CW_angjiahau.Controllers.Actor;
 import javafx.scene.image.Image;
 
-public class Turtle extends Actor{
+import static COMP2042_CW_angjiahau.Main.RESOURCE_PATH;
+
+public class Turtle extends Actor {
 	Image turtle1;
 	Image turtle2;
 	Image turtle3;
-	private int speed;
+	private double speed;
+	public static final String PLATFORM_RESOURCE_PATH = RESOURCE_PATH + "/platforms/";
 	int i = 1;
 	boolean bool = true;
 	@Override
@@ -33,15 +37,17 @@ public class Turtle extends Actor{
 	}
 	
 	public Turtle(int xpos, int ypos, int s, int w, int h) {
-		turtle1 = new Image("file:src/main/resources/platforms/TurtleAnimation1.png", w, h, true, true);
-		turtle2 = new Image("file:src/main/resources/platforms/TurtleAnimation2.png", w, h, true, true);
-		turtle3 = new Image("file:src/main/resources/platforms/TurtleAnimation3.png", w, h, true, true);
+		turtle1 = new Image(PLATFORM_RESOURCE_PATH+ "TurtleAnimation1.png", w, h, true, true);
+		turtle2 = new Image(PLATFORM_RESOURCE_PATH + "TurtleAnimation2.png", w, h, true, true);
+		turtle3 = new Image(PLATFORM_RESOURCE_PATH + "TurtleAnimation3.png", w, h, true, true);
 		setX(xpos);
 		setY(ypos);
 		speed = s;
 		setImage(turtle2);
 	}
-	
+	public double getSpeed(){
+		return speed;
+	}
 	
 	
 }

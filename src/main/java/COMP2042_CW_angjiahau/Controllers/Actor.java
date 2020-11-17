@@ -1,6 +1,5 @@
-package COMP2042_CW_angjiahau;
+package COMP2042_CW_angjiahau.Controllers;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;
 

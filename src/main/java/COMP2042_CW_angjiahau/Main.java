@@ -1,17 +1,16 @@
 package COMP2042_CW_angjiahau;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
-import COMP2042_CW_angjiahau.Animal;
+import COMP2042_CW_angjiahau.Controllers.Animal;
+import COMP2042_CW_angjiahau.Controllers.StageController;
+import COMP2042_CW_angjiahau.Controllers.World;
+import COMP2042_CW_angjiahau.Models.Music;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.*;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import COMP2042_CW_angjiahau.Levels.*;
+import COMP2042_CW_angjiahau.Views.*;
 
 public class Main extends Application {
 	StartingScreen startingscreen;
@@ -24,6 +23,11 @@ public class Main extends Application {
 	Level3 level3;
 	Level4 level4;
 	Level5 level5;
+	Level6 level6;
+	Level7 level7;
+	Level8 level8;
+	Level9 level9;
+	Level10 level10;
 	Animal animal;
 	Scene scene;
 	StageController stageController;
@@ -36,7 +40,7 @@ public class Main extends Application {
 	}
 		
 	@Override
-	public void start(Stage firstStage) throws Exception {
+	public void start(Stage firstStage)  {
 		//add existing levels
 		startingScreen =  new StartingScreen();
 		infoScreen = new InfoScreen();
@@ -45,10 +49,16 @@ public class Main extends Application {
 	    level3 = new Level3();
 	    level4 = new Level4();
 	    level5 = new Level5();
+	    level6 = new Level6();
+	    level7 = new Level7();
+	    level8 = new Level8();
+	    level9 = new Level9();
+	    level10 = new Level10();
+
 	    music = new Music();
 	    
-	    scene  = new Scene(level1,600,800);   
-	    stageController = new StageController(6,scene);
+	    scene  = new Scene(startingScreen,600,800);
+	    stageController = new StageController(12,scene);
 	    
 	   
 	    stageController.addScreen("StartingScreen", startingScreen);	
@@ -58,8 +68,13 @@ public class Main extends Application {
 	    stageController.addScreen("Level3", level3);	
 	    stageController.addScreen("Level4", level4);
 	    stageController.addScreen("Level5", level5);	
-	    
-	    stageController.activate("StartingScreen");
+	    stageController.addScreen("Level6", level6);
+	    stageController.addScreen("Level7", level7);
+		stageController.addScreen("Level8", level8);
+		stageController.addScreen("Level9",level9);
+	    stageController.addScreen("Level10",level10);
+
+	    stageController.activate("Level1");
 	    stageController.startScene();
 
 		 //make window unresizable & start

@@ -1,13 +1,15 @@
-package COMP2042_CW_angjiahau;
+package COMP2042_CW_angjiahau.Models;
 
+import COMP2042_CW_angjiahau.Controllers.Actor;
 import javafx.scene.image.Image;
+import static COMP2042_CW_angjiahau.Models.Turtle.PLATFORM_RESOURCE_PATH;
 
-public class WetTurtle extends Actor{
+public class WetTurtle extends Actor {
 	Image turtle1;
 	Image turtle2;
 	Image turtle3;
 	Image turtle4;
-	private int speed;
+	private double speed;
 	int i = 1;
 	boolean bool = true;
 	boolean sunk = false;
@@ -38,10 +40,10 @@ public class WetTurtle extends Actor{
 			setX(600);
 	}
 	public WetTurtle(int xpos, int ypos, int s, int w, int h) {
-		turtle1 = new Image("file:src/main/resources/platforms/TurtleAnimation1.png", w, h, true, true);
-		turtle2 = new Image("file:src/main/resources/platforms/TurtleAnimation2Wet.png", w, h, true, true);
-		turtle3 = new Image("file:src/main/resources/platforms/TurtleAnimation3Wet.png", w, h, true, true);
-		turtle4 = new Image("file:src/main/resources/platforms/TurtleAnimation4Wet.png", w, h, true, true);
+		turtle1 = new Image(PLATFORM_RESOURCE_PATH + "TurtleAnimation1.png", w, h, true, true);
+		turtle2 = new Image(PLATFORM_RESOURCE_PATH+ "TurtleAnimation2Wet.png", w, h, true, true);
+		turtle3 = new Image(PLATFORM_RESOURCE_PATH+ "TurtleAnimation3Wet.png", w, h, true, true);
+		turtle4 = new Image(PLATFORM_RESOURCE_PATH+ "TurtleAnimation4Wet.png", w, h, true, true);
 		setX(xpos);
 		setY(ypos);
 		speed = s;
@@ -49,5 +51,8 @@ public class WetTurtle extends Actor{
 	}
 	public boolean isSunk() {
 		return sunk;
+	}
+	public double getSpeed(){
+		return speed;
 	}
 }

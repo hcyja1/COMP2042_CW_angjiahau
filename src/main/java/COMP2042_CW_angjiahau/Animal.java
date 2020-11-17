@@ -11,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 
 
 public class Animal extends Actor {
+
 	Music music = new Music();
 	public static String FROG_RESOURCE_PATH = RESOURCE_PATH + "frog/";
 	int points = 0;
@@ -243,7 +244,7 @@ public class Animal extends Actor {
 			setY(679.8+movement);
 		}
 		
-		else if (getY()<waterLevel){
+		 else if (getY()<waterLevel){
 			waterDeath = true;			
 		} 
 		
@@ -274,6 +275,7 @@ public class Animal extends Actor {
 	}
 	
 	public void reset() {
+
 		setX(300);
 		setY(679.8 + movement);
 		end = 0;

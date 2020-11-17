@@ -23,10 +23,7 @@ public class Buttons extends Actor {
 		setY(ypos);
 	}
 	
-	public Buttons(String label,int xpos, int ypos) {	
-		setX(250);
-		setY(400);
-	}
+
 }
 
 

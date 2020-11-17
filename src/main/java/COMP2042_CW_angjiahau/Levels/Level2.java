@@ -13,6 +13,8 @@ import COMP2042_CW_angjiahau.World;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+
+import java.io.IOException;
 import java.util.List;
 import java.io.File;
 import java.util.List;
@@ -20,7 +22,7 @@ import java.util.List;
 
 public class Level2 extends Level {
 	 Animal animal;
-	 
+	List <Integer> HighScoreController;
 	public Level2()  {
 		//add background image
 				BackgroundImage froggerback = new BackgroundImage("level2background");
@@ -44,12 +46,7 @@ public class Level2 extends Level {
 				add(new WetTurtle(400, 217, -1, 130, 130));
 				add(new WetTurtle(200, 217, -1, 130, 130));
 				
-				//set 5 slots for frog to be filled in 
-				add(new End(13,96));
-				add(new End(141,96));
-				add(new End(141 + 141-13,96));
-				add(new End(141 + 141-13+141-13+1,96));
-				add(new End(141 + 141-13+141-13+141-13+3,96));
+
 				
 				//intialize starting main actor image 
 				animal = new Animal("froggerUp");						
@@ -82,10 +79,15 @@ public class Level2 extends Level {
 		if (animal.getStop()) {
 			System.out.print("STOPP:");
 			stop();
+			try {
+				HighScore.HighScoreController("Level2", animal.getPoints());
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setTitle("You Have Won The Game!");
 			alert.setHeaderText("Your High Score: "+animal.getPoints()+"!");
-			alert.setContentText("Highest Possible Score: 800");
+			alert.setContentText("Current Highscore List : " + HighScore.displayHighScore());
 			alert.show();
 		}
 	}

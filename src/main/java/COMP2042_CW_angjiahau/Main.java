@@ -67,8 +67,7 @@ public class Main extends Application {
 	    firstStage.setScene(scene);
 	    firstStage.show();
 	    start();
-	    
-		
+
 	}
 	
 	
@@ -89,11 +88,8 @@ public class Main extends Application {
          		if (entry.getValue().switchScene()) {
          			entry.getValue().resetSwitchScene();
          			stageController.nextScene(entry.getKey());
-				} 
-         		
-            		
-    					
 				}
+			 }
          }
         };
     }

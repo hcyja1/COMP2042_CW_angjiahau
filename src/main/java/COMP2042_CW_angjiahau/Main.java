@@ -80,9 +80,12 @@ public class Main extends Application {
         	 if (scene.getRoot() == startingScreen && startingScreen.startGame()) {
 					stageController.changeScene("Level1",level1);
 					startingScreen.resetStartGame();
-				}	
-        	 
-         	for (Map.Entry<String, World> entry : stageController.getScreenMap().entrySet()) {
+				}
+			 if (scene.getRoot() == infoScreen && infoScreen.goBack()) {
+				 stageController.changeScene("StartingScreen",startingScreen);
+				 infoScreen.resetGoBack();
+			 }
+			 for (Map.Entry<String, World> entry : stageController.getScreenMap().entrySet()) {
          		if (entry.getValue().switchScene()) {
          			entry.getValue().resetSwitchScene();
          			stageController.nextScene(entry.getKey());

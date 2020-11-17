@@ -28,21 +28,30 @@ public class Level5 extends Level {
 				
 				
 				//Add platforms	
-				add(new Log(150, 0, 440, 0.75,3) );		
-				add(new Log(150, 220, 440, 0.75,3) );
-				add(new Log(150, 440, 440, 0.74,3) );
-				add(new Turtle(500, 376, -1, 130, 130));
-				add(new Turtle(300, 376, -1, 130, 130));
-				add(new Log(300, 0, 329, -2,1) );
-				add(new Log(300, 400, 329, -2,1) );
-				add(new WetTurtle(700, 271, -1, 130, 130));
-				add(new WetTurtle(350, 271, -1, 130, 130));				
-				add(new Log(150, 50, 222, 0.75,3) );
-				add(new Log(150, 270, 222, 0.75,3) );
-				add(new Log(150, 490, 222, 0.75,3) );	
-				add(new WetTurtle(300, 162, -1, 130, 130));
-				add(new WetTurtle(600, 162, -1, 130, 130));
-				add(new Turtle(300, 162, -1, 130, 130));
+		add(new Log(150, 0, 440, 0.75,3) );
+		add(new Log(150, 220, 440, 0.75,3) );
+		add(new Log(150, 440, 440, 0.74,3) );
+		add(new Turtle(500, 376, -1, 130, 130));
+		add(new Turtle(300, 376, -1, 130, 130));
+		add(new Log(300, 0, 329, -2,1) );
+		add(new Log(300, 400, 329, -2,1) );
+		add(new WetTurtle(700, 271, -1, 130, 130));
+		add(new WetTurtle(350, 271, -1, 130, 130));
+		add(new Log(150, 50, 222, 0.75,3) );
+		add(new Log(150, 270, 222, 0.75,3) );
+		add(new Log(150, 490, 222, 0.75,3) );
+		add(new WetTurtle(300, 162, -1, 130, 130));
+		add(new WetTurtle(600, 162, -1, 130, 130));
+		add(new Turtle(300, 162, -1, 130, 130));
+		add(new WetTurtle(600, 644, -1, 130, 130));
+		add(new WetTurtle(100, 644, -1, 130, 130));
+		add(new Log(300, 0, 597, -2,1) );
+		add(new Log(300, 400, 597, -2,1) );
+		add(new Log(150, 600, 540, 0.75,3) );
+		add(new Log(150, 150, 540, 0.75,3) );
+		add(new Log(150, 410, 540, 0.74,3) );
+		add(new WetTurtle(250, 490, -1, 130, 130));
+		add(new WetTurtle(600, 490, -1, 130, 130));
 				
 								
 				//set 5 slots for frog to be filled in 
@@ -56,16 +65,7 @@ public class Level5 extends Level {
 				animal = new Animal("froggerUp");						
 				add(animal);
 						
-				//add obstacles
-				add(new Obstacle(100, 640, -3, 50, 50, "racecar"));
-				add(new Obstacle(400, 640, -3, 50, 50, "racecar"));
-				add(new Obstacle(0, 593, 1, 120, 120, "bigTruck"));
-				add(new Obstacle(300, 593, 1, 120, 120, "bigTruck"));
-				add(new Obstacle(600, 593, 1, 120, 120, "bigTruck"));
-				add(new Obstacle(0, 544, 2, 200, 200, "longTruck"));
-				add(new Obstacle(500, 544, 2, 200, 200, "longTruck"));
-				
-				
+
 				
 				
 			

@@ -60,8 +60,7 @@ public class Main extends Application {
 	    
 	    scene  = new Scene(startingScreen,600,800);
 	    stageController = new StageController(12,scene);
-	    
-	   
+
 	    stageController.addScreen("StartingScreen", startingScreen);	
 	    stageController.addScreen("InfoScreen",infoScreen);        
 	    stageController.addScreen("Level1", level1);
@@ -74,8 +73,6 @@ public class Main extends Application {
 		stageController.addScreen("Level8", level8);
 		stageController.addScreen("Level9",level9);
 	    stageController.addScreen("Level10",level10);
-
-
 
 	    stageController.activate("StartingScreen");
 	    stageController.startScene();

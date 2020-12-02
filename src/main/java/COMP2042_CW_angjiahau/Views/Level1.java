@@ -7,9 +7,7 @@ import COMP2042_CW_angjiahau.Models.Obstacle;
 import COMP2042_CW_angjiahau.Models.Turtle;
 import COMP2042_CW_angjiahau.Models.WetTurtle;
 import javafx.scene.control.Alert;
-
 import java.io.IOException;
-
 
 public class Level1 extends Level {
 	 Animal animal;

@@ -41,7 +41,6 @@ public class Level9 extends Level {
         //intialize starting main actor image
         getAnimal().toFront();
 
-
         //add obstacles
         add(new Obstacle(0, 649, 4, 50, 50, "pinkcar"));
         add(new Obstacle(300, 649, 4, 50, 50, "pinkcar"));
@@ -60,7 +59,6 @@ public class Level9 extends Level {
 
     @Override
     public void act(long now) {
-
         if (getAnimal().changeScore()) {
             setNumber(getAnimal().getPoints());
         }

@@ -195,7 +195,6 @@ public class Animal extends Actor {
 		collisionCheck();
 	}
 
-
 	public void collisionCheck(){
 		if (getX()>600) {
 			move(-movement*2, 0);
@@ -206,22 +205,15 @@ public class Animal extends Actor {
 		if (getX() == 240 && getY() == 82) {
 			stop = true;
 		}
-		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) {
-			if(getIntersectingObjects(Log.class).get(0).getLeft())
-				move(getIntersectingObjects(Log.class).get(0).getSpeed(),0);
-			else
-				move (getIntersectingObjects(Log.class).get(0).getSpeed(),0);
-		}
-		else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) {
-			move(getIntersectingObjects(Turtle.class).get(0).getSpeed(),0);
-		}
-		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) {
-			if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
+
+		if (getIntersectingObjects(Platform.class).size() >= 1 && !noMove ) {
+				Platform currentPlatform = getIntersectingObjects(Platform.class).get(0);
+				move(currentPlatform.getSpeed(), 0);
+			if (currentPlatform instanceof SinkingPlatform && ((SinkingPlatform)currentPlatform).isSunk()) {
 				waterDeath = true;
-			} else {
-				move(getIntersectingObjects(WetTurtle.class).get(0).getSpeed(),0);
 			}
 		}
+
 		else if (getIntersectingObjects(End.class).size() >= 1) {
 			inter = (ArrayList<End>) getIntersectingObjects(End.class);
 			if (getIntersectingObjects(End.class).get(0).isActivated()) {

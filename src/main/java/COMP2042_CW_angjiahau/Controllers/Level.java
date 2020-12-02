@@ -7,7 +7,6 @@ import javafx.animation.AnimationTimer;
 
 public class Level extends World {
 	 private final Animal animal;
-	//intialise starting main actor image
 
 	ArrayList<End> ends = new ArrayList<>();
 	ArrayList<Digit> digits = new ArrayList<>();
@@ -21,7 +20,6 @@ public class Level extends World {
 
 	animal = new Animal("froggerUp");
 	add(animal);
-
 
 	ends.forEach(new Consumer<End>() {
 		@Override

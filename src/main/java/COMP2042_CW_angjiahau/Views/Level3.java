@@ -20,8 +20,7 @@ public class Level3 extends Level {
 		//add background image
 				BackgroundImage froggerback = new BackgroundImage("level3background");
 				add(froggerback);
-				
-				
+
 				//Add platforms	
 				add(new Log(150, 0, 166, 0.75,3) );		
 				add(new Log(150, 220, 166, 0.75,3) );
@@ -32,9 +31,7 @@ public class Level3 extends Level {
 				add(new Turtle(600, 217, -2, 130, 130));
 				add(new WetTurtle(400, 217, -2, 130, 130));
 				add(new WetTurtle(200, 217, -2, 130, 130));
-								
 
-				
 				//intialize starting main actor image 
 				getAnimal().toFront();
 
@@ -63,9 +60,6 @@ public class Level3 extends Level {
 	
 	@Override
 	public void act(long now) {
-		
-		
-		
 		if (getAnimal().changeScore()) {
 			setNumber(getAnimal().getPoints());
 		}
@@ -86,8 +80,6 @@ public class Level3 extends Level {
 			alert.setContentText("Current Highscore List : " + HighScore.displayHighScore());
 			alert.show();
 		}
-		
-		
 	}
 	        
 	@Override

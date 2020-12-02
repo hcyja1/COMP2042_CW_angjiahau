@@ -20,13 +20,12 @@ public class Animal extends Actor {
 	int imgSize = 40;
 	boolean carDeath = false;
 	boolean waterDeath = false;
-	boolean stop = false;
 	boolean changeScore = false;
 	int carD = 0;
 	int waterD=0;
 	double w = 800;
 	double waterLevel =0;
-	double clearWaterLevel = 0;
+
 
 	ArrayList<End> inter = new ArrayList<End>(); 
 
@@ -146,13 +145,8 @@ public class Animal extends Actor {
 
 	@Override
 	public void act(long now) {
-		int bounds = 0;
-		if (getY()<0 || getY()>734) {
-			startingPosition();
-		}
-		if (getX()<0) {
-			move(movement*2, 0);
-		}
+		checkoutOfBounds();
+		collisionCheck();
 
 		if (carDeath) {
 			music.squashSound();
@@ -192,18 +186,12 @@ public class Animal extends Actor {
 				}
 			}
 		}
-		collisionCheck();
 	}
 
 	public void collisionCheck(){
-		if (getX()>600) {
-			move(-movement*2, 0);
-		}
+
 		if (getIntersectingObjects(Obstacle.class).size() >= 1) {
 			carDeath = true;
-		}
-		if (getX() == 240 && getY() == 82) {
-			stop = true;
 		}
 
 		if (getIntersectingObjects(Platform.class).size() >= 1 && !noMove ) {
@@ -241,6 +229,17 @@ public class Animal extends Actor {
 		carD = 0;
 	}
 
+	public void checkoutOfBounds(){
+		if (getY()<0 || getY()>734) {
+			startingPosition();
+		}
+		if (getX()<0) {
+			move(movement*2, 0);
+		}
+		if (getX()>600) {
+			move(-movement*2, 0);
+		}
+	}
 	public void startingPosition(){
 		setX(300);
 		setY(679.8 + movement);

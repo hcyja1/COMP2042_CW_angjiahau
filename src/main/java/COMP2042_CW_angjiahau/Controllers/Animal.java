@@ -1,11 +1,8 @@
 package COMP2042_CW_angjiahau.Controllers;
 import static COMP2042_CW_angjiahau.Main.RESOURCE_PATH;
-
 import java.util.ArrayList;
-
 import COMP2042_CW_angjiahau.Models.*;
 import javafx.event.EventHandler;
-
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 
@@ -35,8 +32,7 @@ public class Animal extends Actor {
 
 	public Animal(String animalImage) {
 		setImage(new Image(FROG_RESOURCE_PATH + animalImage + ".png", imgSize, imgSize, true, true));
-		setX(300);
-		setY(679.8+movement);
+		startingPosition();
 		
 		Image froggerNoJump = new Image(FROG_RESOURCE_PATH + "froggerUp.png", imgSize, imgSize, true, true);
 		Image froggerJump = new Image(FROG_RESOURCE_PATH + "froggerUpJump.png", imgSize, imgSize, true, true);
@@ -152,14 +148,12 @@ public class Animal extends Actor {
 	public void act(long now) {
 		int bounds = 0;
 		if (getY()<0 || getY()>734) {
-			setX(300);
-			setY(679.8+movement);
+			startingPosition();
 		}
 		if (getX()<0) {
 			move(movement*2, 0);
 		}
-		
-			
+
 		if (carDeath) {
 			music.squashSound();
 			noMove = true;
@@ -169,10 +163,7 @@ public class Animal extends Actor {
 			}
 							
 			if(carD==4) {
-				setX(300);
-				setY(679.8+movement);
-				carDeath = false;
-				carD = 0;
+				deathReset();
 				setImage(new Image(FROG_RESOURCE_PATH + "froggerUp.png", imgSize, imgSize, true, true));
 				noMove = false;
 				if (points>50) {
@@ -181,31 +172,31 @@ public class Animal extends Actor {
 				}			
 			}
 		}
-					
+
 		if (waterDeath) {
 			noMove = true;
-			music.plunkSound();		
-			
-			if ((now)%11==0&&waterD!=5)  {												
+			music.plunkSound();
+
+			if ((now) % 11 == 0 && waterD != 5) {
 				waterD++;
-				setImage(new Image(FROG_RESOURCE_PATH + "death_animations/waterdeath"+waterD+".png", imgSize,imgSize , true, true));	
+				setImage(new Image(FROG_RESOURCE_PATH + "death_animations/waterdeath" + waterD + ".png", imgSize, imgSize, true, true));
 			}
-												
-			if(waterD==5) {
-				setX(300);
-				setY(679.8+movement);
-				waterDeath = false;
-				waterD = 0;
+
+			if (waterD == 5) {
+				deathReset();
 				setImage(new Image(FROG_RESOURCE_PATH + "froggerUp.png", imgSize, imgSize, true, true));
 				noMove = false;
-					if (points>50) {
-							points-=50;
-								changeScore = true;
-							}
-						}				
-					}				
-							
-		
+				if (points > 50) {
+					points -= 50;
+					changeScore = true;
+				}
+			}
+		}
+		collisionCheck();
+	}
+
+
+	public void collisionCheck(){
 		if (getX()>600) {
 			move(-movement*2, 0);
 		}
@@ -242,16 +233,27 @@ public class Animal extends Actor {
 			w=800;
 			getIntersectingObjects(End.class).get(0).setEnd();
 			end++;
-			setX(300);
-			setY(679.8+movement);
-		}
-		
-		 else if (getY()<waterLevel){
-			waterDeath = true;			
+			startingPosition();
 		}
 
-
+		else if (getY()<waterLevel){
+			waterDeath = true;
+		}
 	}
+
+	public void deathReset(){
+		startingPosition();
+		waterDeath = false;
+		carDeath = false;
+		waterD = 0;
+		carD = 0;
+	}
+
+	public void startingPosition(){
+		setX(300);
+		setY(679.8 + movement);
+	}
+
 	public void waterLevel(int waterLevel) {
 		this.waterLevel = waterLevel;
 	}
@@ -279,9 +281,7 @@ public class Animal extends Actor {
 	}
 	
 	public void reset() {
-
-		setX(300);
-		setY(679.8 + movement);
+		deathReset();
 		end = 0;
 		points = 0;
 	}

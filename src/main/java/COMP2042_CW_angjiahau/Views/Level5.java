@@ -46,20 +46,14 @@ public class Level5 extends Level {
 		add(new Log(150, 410, 540, 0.74,3) );
 		add(new WetTurtle(250, 490, -1, 130, 130));
 		add(new WetTurtle(600, 490, -1, 130, 130));
-				
-								
 
 				
 				//intialize starting main actor image 
-				animal = new Animal("froggerUp");						
-				add(animal);
+				getAnimal().toFront();
 						
 
-				
-				
-			
 				//define water death level
-				animal.waterLevel(680);
+				getAnimal().waterLevel(680);
 				
 				add(new Digit(0, 30, 550, 40));
 				add(new HighScore("hi-scoreImage"));						
@@ -69,23 +63,22 @@ public class Level5 extends Level {
 	@Override
 	public void act(long now) {
 				
-		if (animal.changeScore()) {
-			setNumber(animal.getPoints());
+		if (getAnimal().changeScore()) {
+			setNumber(getAnimal().getPoints());
 		}
-		if (animal.getStop()) {
-			System.out.print("STOPP:");
+		if (getAnimal().getStop()) {
 			stop();
 			try {
-				HighScore.HighScoreController("Level5", animal.getPoints());
+				HighScore.HighScoreController("Level5", getAnimal().getPoints());
 			} catch(IOException e) {
 				e.printStackTrace();
 			}
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setTitle("You Have Won The Round!");
-			if(HighScore.checkHigher(animal.getPoints())){
-				alert.setHeaderText("You have a new High Score: "+animal.getPoints()+"!");
+			if(HighScore.checkHigher(getAnimal().getPoints())){
+				alert.setHeaderText("You have a new High Score: "+getAnimal().getPoints()+"!");
 			}else {
-				alert.setHeaderText("Your High Score: " + animal.getPoints() + "!");
+				alert.setHeaderText("Your High Score: " + getAnimal().getPoints() + "!");
 			}
 			alert.setContentText("Current Highscore List : " + HighScore.displayHighScore());
 			alert.show();
@@ -98,7 +91,7 @@ public class Level5 extends Level {
 	@Override
 	public void start() {
 		super.start();
-		animal.reset();
+		getAnimal().reset();
 	}
 	
 	     

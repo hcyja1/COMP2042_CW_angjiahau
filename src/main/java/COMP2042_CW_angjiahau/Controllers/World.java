@@ -89,8 +89,6 @@ public abstract class World extends Pane {
     	createTimer();
     	timer.start();
     	switchScene = false;
-    	
-                  
     }
 
     public void stop() {

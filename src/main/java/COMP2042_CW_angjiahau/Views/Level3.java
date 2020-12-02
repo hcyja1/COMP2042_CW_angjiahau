@@ -36,8 +36,7 @@ public class Level3 extends Level {
 
 				
 				//intialize starting main actor image 
-				animal = new Animal("froggerUp");						
-				add(animal);
+				getAnimal().toFront();
 
 				//add obstacles
 				add(new Obstacle(0, 649, 1, 120, 120, "bigTruck"));
@@ -54,8 +53,8 @@ public class Level3 extends Level {
 				add(new Obstacle(100, 480, 5, 50, 50, "racecar"));
 				add(new Obstacle(400, 380, 4, 50, 50, "racecar"));
 				add(new Obstacle(50, 380, 4, 50, 50, "racecar"));
-				
-				animal.waterLevel(300);
+
+				getAnimal().waterLevel(300);
 				
 				add(new Digit(0, 30, 550, 40));
 				add(new HighScore("hi-scoreImage"));						
@@ -67,23 +66,22 @@ public class Level3 extends Level {
 		
 		
 		
-		if (animal.changeScore()) {
-			setNumber(animal.getPoints());
+		if (getAnimal().changeScore()) {
+			setNumber(getAnimal().getPoints());
 		}
-		if (animal.getStop()) {
-			System.out.print("STOPP:");
+		if (getAnimal().getStop()) {
 			stop();
 			try {
-				HighScore.HighScoreController("Level3", animal.getPoints());
+				HighScore.HighScoreController("Level3", getAnimal().getPoints());
 			} catch(IOException e) {
 				e.printStackTrace();
 			}
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setTitle("You Have Won The Round!");
-			if(HighScore.checkHigher(animal.getPoints())){
-				alert.setHeaderText("You have a new High Score: "+animal.getPoints()+"!");
+			if(HighScore.checkHigher(getAnimal().getPoints())){
+				alert.setHeaderText("You have a new High Score: "+getAnimal().getPoints()+"!");
 			}else {
-				alert.setHeaderText("Your High Score: " + animal.getPoints() + "!");
+				alert.setHeaderText("Your High Score: " + getAnimal().getPoints() + "!");
 			}
 			alert.setContentText("Current Highscore List : " + HighScore.displayHighScore());
 			alert.show();
@@ -95,7 +93,7 @@ public class Level3 extends Level {
 	@Override
 	public void start() {
 		super.start();
-		animal.reset();
+		getAnimal().reset();
 	}
 	
 	     

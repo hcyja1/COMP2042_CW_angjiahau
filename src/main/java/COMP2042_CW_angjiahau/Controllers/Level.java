@@ -1,15 +1,14 @@
 package COMP2042_CW_angjiahau.Controllers;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-
-
 import COMP2042_CW_angjiahau.Models.Digit;
-
 import javafx.animation.AnimationTimer;
 
 public class Level extends World {
+	 private final Animal animal;
+	//intialise starting main actor image
+
 	ArrayList<End> ends = new ArrayList<>();
 	ArrayList<Digit> digits = new ArrayList<>();
 	public Level() {
@@ -19,6 +18,11 @@ public class Level extends World {
 	ends.add(new End(141 + 141-13,96));
 	ends.add(new End(141 + 141-13+141-13+1,96));
 	ends.add(new End(141 + 141-13+141-13+141-13+3,96));
+
+	animal = new Animal("froggerUp");
+	add(animal);
+
+
 	ends.forEach(new Consumer<End>() {
 		@Override
 		public void accept(End end) {
@@ -26,13 +30,16 @@ public class Level extends World {
 		}
 	});
 }
-	Animal animal;
-	
+
 	@Override
 	public void act(long now) {
 			
 	}
-	
+
+	public Animal getAnimal(){
+		return animal;
+	}
+
 	@Override
 	public void createTimer() {
 	 super.createTimer(new AnimationTimer() {
@@ -79,5 +86,7 @@ public class Level extends World {
 			});
 			setNumber(0);
 		}
+
+
 }
 

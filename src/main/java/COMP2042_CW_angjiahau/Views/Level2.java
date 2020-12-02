@@ -39,12 +39,11 @@ public class Level2 extends Level {
 				add(new WetTurtle(600, 217, -1, 130, 130));
 				add(new WetTurtle(400, 217, -1, 130, 130));
 				add(new WetTurtle(200, 217, -1, 130, 130));
-				
 
-				
-				//intialize starting main actor image 
-				animal = new Animal("froggerUp");						
-				add(animal);
+
+
+				//intialize starting main actor image
+				getAnimal().toFront();
 						
 				add(new Obstacle(0, 649, 1, 120, 120, "bigTruck"));
 				add(new Obstacle(300, 649, 1, 120, 120, "bigTruck"));
@@ -56,8 +55,8 @@ public class Level2 extends Level {
 				add(new Obstacle(500, 540, 1, 200, 200, "longTruck"));
 				add(new Obstacle(500, 490, -5, 50, 50, "racecar"));
 				add(new Obstacle(100, 490, -5, 50, 50, "racecar"));
-				
-				animal.waterLevel(413);
+
+				getAnimal().waterLevel(413);
 				
 				add(new Digit(0, 30, 550, 40));
 				add(new HighScore("hi-scoreImage"));						
@@ -67,23 +66,22 @@ public class Level2 extends Level {
 	@Override
 	public void act(long now) {
 		
-		if (animal.changeScore()) {
-			setNumber(animal.getPoints());
+		if (getAnimal().changeScore()) {
+			setNumber(getAnimal().getPoints());
 		}
-		if (animal.getStop()) {
-			System.out.print("STOPP:");
+		if (getAnimal().getStop()) {
 			stop();
 			try {
-				HighScore.HighScoreController("Level2", animal.getPoints());
+				HighScore.HighScoreController("Level2", getAnimal().getPoints());
 			} catch(IOException e) {
 				e.printStackTrace();
 			}
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setTitle("You Have Won The Round!");
-			if(HighScore.checkHigher(animal.getPoints())){
-				alert.setHeaderText("You have a new High Score: "+animal.getPoints()+"!");
+			if(HighScore.checkHigher(getAnimal().getPoints())){
+				alert.setHeaderText("You have a new High Score: "+getAnimal().getPoints()+"!");
 			}else {
-				alert.setHeaderText("Your High Score: " + animal.getPoints() + "!");
+				alert.setHeaderText("Your High Score: " + getAnimal().getPoints() + "!");
 			}
 			alert.setContentText("Current Highscore List : " + HighScore.displayHighScore());
 			alert.show();
@@ -93,7 +91,7 @@ public class Level2 extends Level {
 	@Override
 	public void start() {
 		super.start();
-		animal.reset();
+		getAnimal().reset();
 	}
 	        
 }

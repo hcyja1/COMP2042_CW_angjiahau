@@ -28,7 +28,8 @@ public class Main extends Application {
 	Level8 level8;
 	Level9 level9;
 	Level10 level10;
-	Animal animal;
+
+
 	Scene scene;
 	StageController stageController;
 	World world;
@@ -63,7 +64,7 @@ public class Main extends Application {
 	   
 	    stageController.addScreen("StartingScreen", startingScreen);	
 	    stageController.addScreen("InfoScreen",infoScreen);        
-	    stageController.addScreen("Level1", level1);	
+	    stageController.addScreen("Level1", level1);
 	    stageController.addScreen("Level2", level2);
 	    stageController.addScreen("Level3", level3);	
 	    stageController.addScreen("Level4", level4);
@@ -74,7 +75,9 @@ public class Main extends Application {
 		stageController.addScreen("Level9",level9);
 	    stageController.addScreen("Level10",level10);
 
-	    stageController.activate("Level1");
+
+
+	    stageController.activate("StartingScreen");
 	    stageController.startScene();
 
 		 //make window unresizable & start

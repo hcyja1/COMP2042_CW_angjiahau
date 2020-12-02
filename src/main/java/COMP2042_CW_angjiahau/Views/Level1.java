@@ -17,6 +17,7 @@ public class Level1 extends Level {
 	 World world;
 	 
 	public Level1()  {
+
 		//add background image
 				BackgroundImage froggerback = new BackgroundImage("iKogsKW");
 				add(froggerback);
@@ -38,10 +39,8 @@ public class Level1 extends Level {
 				add(new WetTurtle(400, 217, -1, 130, 130));
 				add(new WetTurtle(200, 217, -1, 130, 130));
 
-				//intialize starting main actor image 
-				animal = new Animal("froggerUp");						
-				add(animal);
-				
+				//intialize starting main actor image
+				getAnimal().toFront();
 
 				//add obstacles
 				add(new Obstacle(0, 649, 1, 120, 120, "bigTruck"));
@@ -57,20 +56,20 @@ public class Level1 extends Level {
 
 				add(new Digit(0, 30, 550, 40));
 				add(new HighScore("hi-scoreImage"));	
-				animal.waterLevel(413);
+				getAnimal().waterLevel(413);
+
 	}
 	
 	@Override
 	public void act(long now) {
 		
-		if (animal.changeScore()) {
-			setNumber(animal.getPoints());
+		if (getAnimal().changeScore()) {
+			setNumber(getAnimal().getPoints());
 		}
-		if (animal.getStop()) {
-			System.out.print("STOPP:");
+		if (getAnimal().getStop()) {
 			stop();
 			try {
-				HighScore.HighScoreController("Level1", animal.getPoints());
+				HighScore.HighScoreController("Level1", getAnimal().getPoints());
 			} catch(IOException e){
 				e.printStackTrace();
 				System.out.println("Error in File Controller");
@@ -78,10 +77,10 @@ public class Level1 extends Level {
 
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setTitle("You Have Won The Round!");
-			if(HighScore.checkHigher(animal.getPoints())){
-				alert.setHeaderText("You have a new High Score: "+animal.getPoints()+"!");
+			if(HighScore.checkHigher(getAnimal().getPoints())){
+				alert.setHeaderText("You have a new High Score: "+ getAnimal().getPoints()+"!");
 			}else {
-				alert.setHeaderText("Your High Score: " + animal.getPoints() + "!");
+				alert.setHeaderText("Your High Score: " + getAnimal().getPoints() + "!");
 			}
 			alert.setContentText("Current Highscore List : " + HighScore.displayHighScore());
 			alert.show();
@@ -91,7 +90,7 @@ public class Level1 extends Level {
 	@Override
 	public void start() {
 		super.start();
-		animal.reset();
+		getAnimal().reset();
 	}
 	       
 }

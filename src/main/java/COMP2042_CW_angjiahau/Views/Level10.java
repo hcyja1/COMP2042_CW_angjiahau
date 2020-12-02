@@ -16,7 +16,7 @@ public class Level10 extends Level {
         BackgroundImage froggerback = new BackgroundImage("level10background");
         add(froggerback);
 
-/*
+
         //add obstacles
         add(new Obstacle(100, 640, -5, 50, 50, "racecar"));
         add(new Obstacle(400, 640, -5, 50, 50, "racecar"));
@@ -39,19 +39,11 @@ public class Level10 extends Level {
         add(new Obstacle(400, 165, 4, 50, 50, "racecar"));
         add(new Obstacle(50, 165, 4, 50, 50, "racecar"));
 
-*/
-
-
         //intialize starting main actor image
-        animal = new Animal("froggerUp");
-        add(animal);
-
-
-
-
+        getAnimal().toFront();
 
         //define water death level
-        animal.waterLevel(0);
+        getAnimal().waterLevel(0);
 
         add(new Digit(0, 30, 550, 40));
         add(new HighScore("hi-scoreImage"));
@@ -61,23 +53,22 @@ public class Level10 extends Level {
     @Override
     public void act(long now) {
 
-        if (animal.changeScore()) {
-            setNumber(animal.getPoints());
+        if (getAnimal().changeScore()) {
+            setNumber(getAnimal().getPoints());
         }
-        if (animal.getStop()) {
-            System.out.print("STOPP:");
+        if (getAnimal().getStop()) {
             stop();
             try {
-                HighScore.HighScoreController("Level10", animal.getPoints());
+                HighScore.HighScoreController("Level10", getAnimal().getPoints());
             } catch(IOException e) {
                 e.printStackTrace();
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("CONGRATULATIONS! You Have Won!");
-            if(HighScore.checkHigher(animal.getPoints())){
-                alert.setHeaderText("You have a new High Score: "+animal.getPoints()+"!");
+            if(HighScore.checkHigher(getAnimal().getPoints())){
+                alert.setHeaderText("You have a new High Score: "+getAnimal().getPoints()+"!");
             }else {
-                alert.setHeaderText("Your High Score: " + animal.getPoints() + "!");
+                alert.setHeaderText("Your High Score: " + getAnimal().getPoints() + "!");
             }
             alert.setContentText("Current Highscore List : " + HighScore.displayHighScore());
             alert.show();
@@ -90,7 +81,7 @@ public class Level10 extends Level {
     @Override
     public void start() {
         super.start();
-        animal.reset();
+        getAnimal().reset();
     }
 
 

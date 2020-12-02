@@ -39,8 +39,7 @@ public class Level9 extends Level {
         add(new WetTurtle(200, 217, -2, 130, 130));
 
         //intialize starting main actor image
-        animal = new Animal("froggerUp");
-        add(animal);
+        getAnimal().toFront();
 
 
         //add obstacles
@@ -50,27 +49,25 @@ public class Level9 extends Level {
         add(new Obstacle(100, 597, -5, 50, 50, "racecar"));
         add(new Obstacle(250, 597, -5, 50, 50, "racecar"));
         add(new Obstacle(400, 597, -5, 50, 50, "racecar"));
-        add(new Obstacle(550, 597, -5, 50, 50, "racecar"));
         add(new Obstacle(0, 540, 3, 200, 200, "longTruck"));
         add(new Obstacle(500, 540, 3, 200, 200, "longTruck"));
         add(new Obstacle(500, 490, -5, 50, 50, "car"));
 
         add(new Digit(0, 30, 550, 40));
         add(new HighScore("hi-scoreImage"));
-        animal.waterLevel(413);
+        getAnimal().waterLevel(413);
     }
 
     @Override
     public void act(long now) {
 
-        if (animal.changeScore()) {
-            setNumber(animal.getPoints());
+        if (getAnimal().changeScore()) {
+            setNumber(getAnimal().getPoints());
         }
-        if (animal.getStop()) {
-            System.out.print("STOPP:");
+        if (getAnimal().getStop()) {
             stop();
             try {
-                HighScore.HighScoreController("Level9", animal.getPoints());
+                HighScore.HighScoreController("Level9", getAnimal().getPoints());
             } catch(IOException e){
                 e.printStackTrace();
                 System.out.println("Error in File Controller");
@@ -78,10 +75,10 @@ public class Level9 extends Level {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("You Have Won The Round!");
-            if(HighScore.checkHigher(animal.getPoints())){
-                alert.setHeaderText("You have a new High Score: "+animal.getPoints()+"!");
+            if(HighScore.checkHigher(getAnimal().getPoints())){
+                alert.setHeaderText("You have a new High Score: "+getAnimal().getPoints()+"!");
             }else {
-                alert.setHeaderText("Your High Score: " + animal.getPoints() + "!");
+                alert.setHeaderText("Your High Score: " + getAnimal().getPoints() + "!");
             }
             alert.setContentText("Current Highscore List : " + HighScore.displayHighScore());
             alert.show();
@@ -91,7 +88,7 @@ public class Level9 extends Level {
     @Override
     public void start() {
         super.start();
-        animal.reset();
+        getAnimal().reset();
     }
 
 }

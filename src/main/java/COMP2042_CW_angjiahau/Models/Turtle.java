@@ -1,32 +1,18 @@
 package COMP2042_CW_angjiahau.Models;
 
-import COMP2042_CW_angjiahau.Controllers.Actor;
+import javafx.animation.Timeline;
 import javafx.scene.image.Image;
+import java.util.HashMap;
 
 import static COMP2042_CW_angjiahau.Main.RESOURCE_PATH;
 
 public class Turtle extends Platform {
-	Image turtle1;
-	Image turtle2;
-	Image turtle3;
 	public static final String PLATFORM_RESOURCE_PATH = RESOURCE_PATH + "/platforms/";
+	HashMap<String,Image> TurtleAnimation = new HashMap<String,Image>();
 
 	@Override
 	public void act(long now) {
-
-				if (now/900000000  % 3 ==0) {
-					setImage(turtle2);
-					
-				}
-				else if (now/900000000 % 3 == 1) {
-					setImage(turtle1);
-					
-				}
-				else if (now/900000000 %3 == 2) {
-					setImage(turtle3);
-					
-				}
-
+		turtleAnimation(now);
 		super.act(now);
 		if (getX() > 600 && getSpeed()>0)
 			setX(-200);
@@ -36,14 +22,31 @@ public class Turtle extends Platform {
 	
 	public Turtle(int xpos, int ypos, int s, int w, int h) {
 		super(xpos,ypos,s);
-		turtle1 = new Image(PLATFORM_RESOURCE_PATH+ "TurtleAnimation1.png", w, h, true, true);
-		turtle2 = new Image(PLATFORM_RESOURCE_PATH + "TurtleAnimation2.png", w, h, true, true);
-		turtle3 = new Image(PLATFORM_RESOURCE_PATH + "TurtleAnimation3.png", w, h, true, true);
+		addHashTurtle(w,h);
 		setX(xpos);
 		setY(ypos);
-		setImage(turtle2);
+		setImage(TurtleAnimation.get("turtleAnimation2"));
 	}
 
-	
-	
+	public void turtleAnimation(long time){
+
+		if (time/900000000  % 3 ==0) {
+			setImage(TurtleAnimation.get("turtleAnimation2"));
+		}
+		else if (time/900000000 % 3 == 1) {
+			setImage(TurtleAnimation.get("turtleAnimation1"));
+		}
+		else if (time/900000000 %3 == 2) {
+			setImage(TurtleAnimation.get("turtleAnimation3"));
+		}
+
+	}
+
+	public void addHashTurtle(int w,int h){
+		for(int animationImages=0;animationImages<=3;animationImages++) {
+			TurtleAnimation.put("turtleAnimation"+animationImages, new Image(PLATFORM_RESOURCE_PATH + "TurtleAnimation" + animationImages + ".png", w, h, true, true));
+		}
+	}
+
+
 }

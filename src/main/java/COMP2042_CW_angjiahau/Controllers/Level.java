@@ -2,6 +2,8 @@ package COMP2042_CW_angjiahau.Controllers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+
+import COMP2042_CW_angjiahau.Models.Animal;
 import COMP2042_CW_angjiahau.Models.Digit;
 import javafx.animation.AnimationTimer;
 

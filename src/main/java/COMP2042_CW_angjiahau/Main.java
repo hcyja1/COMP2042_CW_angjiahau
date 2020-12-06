@@ -2,7 +2,6 @@ package COMP2042_CW_angjiahau;
 
 import java.util.Map;
 
-import COMP2042_CW_angjiahau.Controllers.Animal;
 import COMP2042_CW_angjiahau.Controllers.StageController;
 import COMP2042_CW_angjiahau.Controllers.World;
 import COMP2042_CW_angjiahau.Models.Music;
@@ -10,7 +9,7 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.*;
 import javafx.stage.Stage;
-import COMP2042_CW_angjiahau.Views.*;
+import COMP2042_CW_angjiahau.Screens.*;
 
 public class Main extends Application {
 	StartingScreen startingscreen;

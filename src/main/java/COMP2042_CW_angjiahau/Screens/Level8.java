@@ -1,5 +1,5 @@
-package COMP2042_CW_angjiahau.Views;
-import COMP2042_CW_angjiahau.Controllers.Animal;
+package COMP2042_CW_angjiahau.Screens;
+import COMP2042_CW_angjiahau.Models.Animal;
 import COMP2042_CW_angjiahau.Controllers.Level;
 import COMP2042_CW_angjiahau.Models.BackgroundImage;
 import COMP2042_CW_angjiahau.Models.Digit;

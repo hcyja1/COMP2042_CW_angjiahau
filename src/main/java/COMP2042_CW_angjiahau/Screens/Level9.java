@@ -1,11 +1,6 @@
-package COMP2042_CW_angjiahau.Views;
+package COMP2042_CW_angjiahau.Screens;
 import COMP2042_CW_angjiahau.Controllers.*;
-import COMP2042_CW_angjiahau.Models.BackgroundImage;
-import COMP2042_CW_angjiahau.Models.Digit;
-import COMP2042_CW_angjiahau.Models.Log;
-import COMP2042_CW_angjiahau.Models.Obstacle;
-import COMP2042_CW_angjiahau.Models.Turtle;
-import COMP2042_CW_angjiahau.Models.WetTurtle;
+import COMP2042_CW_angjiahau.Models.*;
 import javafx.scene.control.Alert;
 
 import java.io.IOException;

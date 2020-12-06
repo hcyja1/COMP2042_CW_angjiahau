@@ -1,32 +1,29 @@
 package COMP2042_CW_angjiahau.Models;
-
-import COMP2042_CW_angjiahau.Controllers.Actor;
 import javafx.scene.image.Image;
+import java.util.HashMap;
+
 import static COMP2042_CW_angjiahau.Models.Turtle.PLATFORM_RESOURCE_PATH;
 
 public class WetTurtle extends SinkingPlatform {
-	Image turtle1;
-	Image turtle2;
-	Image turtle3;
-	Image turtle4;
+	HashMap<String,Image> WetTurtleAnimation = new HashMap<String,Image>();
 
 	@Override
 	public void act(long now) {
-				if (now/900000000  % 4 ==0) {
-					setImage(turtle2);
-					setSunk(false);
-				}
-				else if (now/900000000 % 4 == 1) {
-					setImage(turtle1);
-					setSunk(false);
-				}
-				else if (now/900000000 %4 == 2) {
-					setImage(turtle3);
-					setSunk(false);
-				} else if (now/900000000 %4 == 3) {
-					setImage(turtle4);
-					setSunk(true);
-				}
+		if (now/900000000  % 4 ==0) {
+			setImage(WetTurtleAnimation.get("wetturtleAnimation2"));
+			setSunk(false);
+		}
+		else if (now/900000000 % 4 == 1) {
+			setImage(WetTurtleAnimation.get("Turtle"));
+			setSunk(false);
+		}
+		else if (now/900000000 %4 == 2) {
+			setImage(WetTurtleAnimation.get("wetturtleAnimation3"));
+			setSunk(false);
+		} else if (now/900000000 %4 == 3) {
+			setImage(WetTurtleAnimation.get("wetturtleAnimation4"));
+			setSunk(true);
+		}
 
 		move(speed , 0);
 		if (getX() > 600 && getSpeed()>0)
@@ -36,14 +33,18 @@ public class WetTurtle extends SinkingPlatform {
 	}
 	public WetTurtle(int xpos, int ypos, int s, int w, int h) {
 		super(xpos,ypos,s);
-		turtle1 = new Image(PLATFORM_RESOURCE_PATH + "TurtleAnimation1.png", w, h, true, true);
-		turtle2 = new Image(PLATFORM_RESOURCE_PATH+ "TurtleAnimation2Wet.png", w, h, true, true);
-		turtle3 = new Image(PLATFORM_RESOURCE_PATH+ "TurtleAnimation3Wet.png", w, h, true, true);
-		turtle4 = new Image(PLATFORM_RESOURCE_PATH+ "TurtleAnimation4Wet.png", w, h, true, true);
+		addHashWetTurtle(w,h);
 		setX(xpos);
 		setY(ypos);
-		setImage(turtle2);
+		setImage(WetTurtleAnimation.get("wetturtleAnimation2"));
 	}
 
+	public void addHashWetTurtle(int w,int h){
+		WetTurtleAnimation.put("Turtle", new Image(PLATFORM_RESOURCE_PATH+ "TurtleAnimation2.png", w, h, true, true));
+		for(int animationImages=0;animationImages<=4;animationImages++) {
+			WetTurtleAnimation.put("wetturtleAnimation"+animationImages, new Image(PLATFORM_RESOURCE_PATH + "TurtleAnimation" + animationImages + "Wet.png", w, h, true, true));
+		}
+	}
 
 }
+

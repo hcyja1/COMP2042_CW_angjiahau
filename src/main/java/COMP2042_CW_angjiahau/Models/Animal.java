@@ -1,7 +1,11 @@
-package COMP2042_CW_angjiahau.Controllers;
+package COMP2042_CW_angjiahau.Models;
 import static COMP2042_CW_angjiahau.Main.RESOURCE_PATH;
+
 import java.util.ArrayList;
-import COMP2042_CW_angjiahau.Models.*;
+import java.util.HashMap;
+
+import COMP2042_CW_angjiahau.Controllers.Actor;
+import COMP2042_CW_angjiahau.Controllers.End;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
@@ -27,26 +31,26 @@ public class Animal extends Actor {
 	double waterLevel =0;
 
 
-	ArrayList<End> inter = new ArrayList<End>(); 
+	ArrayList<End> inter = new ArrayList<End>();
+	HashMap<String,Image> carDeathAnimation = new HashMap<String, Image>();
+	HashMap<String,Image> waterDeathAnimation = new HashMap<String,Image>();
 
 	public Animal(String animalImage) {
 		setImage(new Image(FROG_RESOURCE_PATH + animalImage + ".png", imgSize, imgSize, true, true));
-		startingPosition();
-		
 		Image froggerNoJump = new Image(FROG_RESOURCE_PATH + "froggerUp.png", imgSize, imgSize, true, true);
 		Image froggerJump = new Image(FROG_RESOURCE_PATH + "froggerUpJump.png", imgSize, imgSize, true, true);
-		
-		
-	
+		startingPosition();
+		addHashCar();
+		addHashWater();
+
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
 		
 			public void handle(KeyEvent event){		
-				
-				if(noMove) {					
-				} 			
+
+				if(noMove) {
+				}
 				else {
 					music.hopSound();
-								
 					switch(event.getCode()) {
 						
 					case UP:
@@ -147,82 +151,87 @@ public class Animal extends Actor {
 	public void act(long now) {
 		checkoutOfBounds();
 		collisionCheck();
+		carDeathAnimation(now);
+		waterDeathAnimation(now);
+	}
 
+	public void collisionCheck(){
+			if (getIntersectingObjects(Obstacle.class).size() >= 1) {
+				carDeath = true;
+			}
+			if (getIntersectingObjects(Platform.class).size() >= 1 && !noMove ) {
+					Platform currentPlatform = getIntersectingObjects(Platform.class).get(0);
+					move(currentPlatform.getSpeed(), 0);
+				if (currentPlatform instanceof SinkingPlatform && ((SinkingPlatform)currentPlatform).isSunk()) {
+					waterDeath = true;
+				}
+			}
+			else if (getIntersectingObjects(End.class).size() >= 1) {
+				inter = (ArrayList<End>) getIntersectingObjects(End.class);
+				if (getIntersectingObjects(End.class).get(0).isActivated()) {
+					end--;
+					points-=50;
+				}
+				points+=50;
+				changeScore = true;
+				w=800;
+				getIntersectingObjects(End.class).get(0).setEnd();
+				end++;
+				startingPosition();
+			}
+			else if (getY()<waterLevel){
+				waterDeath = true;
+			}
+	}
+
+	public void carDeathAnimation(long time){
 		if (carDeath) {
 			music.squashSound();
 			noMove = true;
-			if ((now)%11==0&&carD!=4) {
+			if ((time)%11==0 && carD!=4) {
 				carD++;
-				setImage(new Image(FROG_RESOURCE_PATH + "death_animations/cardeath" +carD+ ".png", imgSize, imgSize, true, true));
+				setImage(carDeathAnimation.get("carDeathAnimation"+carD));
 			}
-							
 			if(carD==4) {
 				deathReset();
-				setImage(new Image(FROG_RESOURCE_PATH + "froggerUp.png", imgSize, imgSize, true, true));
-				noMove = false;
-				if (points>50) {
-					points-=50;
-					changeScore = true;
-				}			
-			}
-		}
-
-		if (waterDeath) {
-			noMove = true;
-			music.plunkSound();
-
-			if ((now) % 11 == 0 && waterD != 5) {
-				waterD++;
-				setImage(new Image(FROG_RESOURCE_PATH + "death_animations/waterdeath" + waterD + ".png", imgSize, imgSize, true, true));
-			}
-
-			if (waterD == 5) {
-				deathReset();
-				setImage(new Image(FROG_RESOURCE_PATH + "froggerUp.png", imgSize, imgSize, true, true));
-				noMove = false;
-				if (points > 50) {
-					points -= 50;
-					changeScore = true;
-				}
 			}
 		}
 	}
 
-	public void collisionCheck(){
-
-		if (getIntersectingObjects(Obstacle.class).size() >= 1) {
-			carDeath = true;
-		}
-
-		if (getIntersectingObjects(Platform.class).size() >= 1 && !noMove ) {
-				Platform currentPlatform = getIntersectingObjects(Platform.class).get(0);
-				move(currentPlatform.getSpeed(), 0);
-			if (currentPlatform instanceof SinkingPlatform && ((SinkingPlatform)currentPlatform).isSunk()) {
-				waterDeath = true;
+	public void waterDeathAnimation(long time){
+		if (waterDeath) {
+			noMove = true;
+			music.plunkSound();
+			if ((time) % 11 == 0 && waterD != 5) {
+				waterD++;
+				setImage(waterDeathAnimation.get("waterDeathAnimation"+waterD));
+			}
+			if (waterD == 5) {
+				deathReset();
 			}
 		}
+	}
 
-		else if (getIntersectingObjects(End.class).size() >= 1) {
-			inter = (ArrayList<End>) getIntersectingObjects(End.class);
-			if (getIntersectingObjects(End.class).get(0).isActivated()) {
-				end--;
-				points-=50;
-			}
-			points+=50;
-			changeScore = true;
-			w=800;
-			getIntersectingObjects(End.class).get(0).setEnd();
-			end++;
-			startingPosition();
+	public void addHashCar(){
+		for(int carDImages=0;carDImages<=3;carDImages++) {
+			carDeathAnimation.put("carDeathAnimation"+carDImages, new Image(FROG_RESOURCE_PATH + "death_animations/cardeath" + carDImages + ".png", imgSize, imgSize, true, true));
 		}
+	}
 
-		else if (getY()<waterLevel){
-			waterDeath = true;
+	public void addHashWater(){
+		for(int waterDImages=0;waterDImages<=4;waterDImages++) {
+			waterDeathAnimation.put("waterDeathAnimation"+waterDImages, new Image(FROG_RESOURCE_PATH + "death_animations/waterdeath" + waterDImages + ".png", imgSize, imgSize, true, true));
 		}
 	}
 
 	public void deathReset(){
 		startingPosition();
+		setImage(new Image(FROG_RESOURCE_PATH + "froggerUp.png", imgSize, imgSize, true, true));
+		noMove = false;
+		if (points > 50) {
+			points -= 50;
+			changeScore = true;
+		}
 		waterDeath = false;
 		carDeath = false;
 		waterD = 0;

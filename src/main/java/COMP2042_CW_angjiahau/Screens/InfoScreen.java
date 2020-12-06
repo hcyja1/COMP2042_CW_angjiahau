@@ -1,41 +1,43 @@
-package COMP2042_CW_angjiahau.Views;
+package COMP2042_CW_angjiahau.Screens;
 
-import javafx.event.EventHandler;
 import COMP2042_CW_angjiahau.Models.BackgroundImage;
 import COMP2042_CW_angjiahau.Models.Buttons;
 import COMP2042_CW_angjiahau.Controllers.World;
+import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-
-public class StartingScreen extends World{
-	Boolean StartGame=false;
+public class InfoScreen extends World {
 	Buttons startLabel;
-	Buttons infoButton;
-	public StartingScreen() {
+	Buttons backButton;
+	Boolean goBack=false;
+	Boolean startGame = false;
 
-		BackgroundImage froggerback = new BackgroundImage("MainScreen");
+	public InfoScreen() {
+
+		BackgroundImage froggerback = new BackgroundImage("InfoScreen");
 		add(froggerback);
-		startLabel = new Buttons("START Label",50,730,500,500);
+		startLabel = new Buttons("START Label",430,770,150,150);
 		add(startLabel);
-		infoButton = new Buttons("INFOButton",150,500,350,150);
-		add(infoButton);
+		backButton = new Buttons("BACKButton",15,10,150,150);
+		add(backButton);
 
-		infoButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
+		backButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent event) {
-				stop();
+				SetGoBack();
 			}
 		});
 
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event){
 				switch(event.getCode()) {
-					case I:
+
+					case ENTER:
 						stop();
 						break;
 
-					case ENTER:
-						setStartGame();
+					case B:
+						SetGoBack();
 						break;
 
 					default:
@@ -43,31 +45,29 @@ public class StartingScreen extends World{
 				}
 			}
 		});
-
 	}
 
 	@Override
 	public void act(long now) {
-
 		if (now/900000000  % 2 ==0) {
 			startLabel.setVisible(false);
 		}
 		else if (now/900000000 % 2 == 1) {
 			startLabel.setVisible(true);
 		}
-
-
 	}
 
-	public Boolean startGame() {
-		return StartGame;
+	public Boolean goBack() {
+		return goBack;
 	}
 
-	public Boolean setStartGame() {
-		return StartGame = true;
+	public Boolean SetGoBack() {
+		return goBack = true;
 	}
-	public Boolean resetStartGame() {
-		return StartGame = false;
+
+	public Boolean resetGoBack() {
+		return goBack = false;
 	}
+
 
 }

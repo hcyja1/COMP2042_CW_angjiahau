@@ -4,6 +4,8 @@ package COMP2042_CW_angjiahau.Controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import COMP2042_CW_angjiahau.Models.Turtle;
+import COMP2042_CW_angjiahau.Models.WetTurtle;
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,8 +22,9 @@ import javafx.scene.layout.Pane;
 public abstract class World extends Pane {
     private AnimationTimer timer;
     protected boolean switchScene;
-   
-    
+    Turtle turtle;
+
+
     public World() {
     	
     	sceneProperty().addListener(new ChangeListener<Scene>() {
@@ -73,7 +76,7 @@ public abstract class World extends Pane {
             public void handle(long now) {
                 act(now);
                 List<Actor> actors = getObjects(Actor.class);
-                
+
                 for (Actor anActor: actors) {
                 	anActor.act(now);
                 }
@@ -84,16 +87,29 @@ public abstract class World extends Pane {
     public void createTimer(AnimationTimer timer) {
     	this.timer=timer;   	
     }
-    
+
     public void start() {    	
     	createTimer();
     	timer.start();
     	switchScene = false;
+
+		List<WetTurtle> wetturtles = getObjects(WetTurtle.class);
+		for(WetTurtle wetturtle : wetturtles){
+			wetturtle.playWetTurtleAnimation();
+		}
+		List<Turtle> turtles = getObjects(Turtle.class);
+    	for(Turtle turtle : turtles){
+    		turtle.playTurtleAnimation();
+		}
+
     }
 
     public void stop() {
+
+
     	switchScene = true;
-    	timer.stop();      	
+    	timer.stop();
+
     }
     
     public boolean switchScene() {
@@ -111,8 +127,7 @@ public abstract class World extends Pane {
     public void remove(Actor actor) {
         getChildren().remove(actor);
     }
-    
-   
+
 
     public <A extends Actor> List<A> getObjects(Class<A> cls) {
         ArrayList<A> someArray = new ArrayList<A>();

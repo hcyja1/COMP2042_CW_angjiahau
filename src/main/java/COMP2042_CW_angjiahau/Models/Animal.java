@@ -1,9 +1,7 @@
 package COMP2042_CW_angjiahau.Models;
 import static COMP2042_CW_angjiahau.Main.RESOURCE_PATH;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import COMP2042_CW_angjiahau.Controllers.Actor;
 import COMP2042_CW_angjiahau.Controllers.End;
 import javafx.event.EventHandler;
@@ -43,11 +41,14 @@ public class Animal extends Actor {
 		addHashCar();
 		addHashWater();
 
-		setOnKeyPressed(new EventHandler<KeyEvent>() {
-		
-			public void handle(KeyEvent event){		
 
-				if(noMove) {
+
+
+				setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+					public void handle(KeyEvent event){
+
+						if(noMove) {
 				}
 				else {
 					music.hopSound();
@@ -94,7 +95,8 @@ public class Animal extends Actor {
 						}
 					}
 			});
-				
+
+
 	setOnKeyReleased(new EventHandler<KeyEvent>() {
 		
 		public void handle(KeyEvent event){		
@@ -144,7 +146,7 @@ public class Animal extends Actor {
 					}
 				}
 		});	
-		
+
 }
 
 	@Override

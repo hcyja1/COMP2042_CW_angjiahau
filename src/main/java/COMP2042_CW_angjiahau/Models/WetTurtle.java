@@ -1,5 +1,10 @@
 package COMP2042_CW_angjiahau.Models;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.scene.image.Image;
+import javafx.util.Duration;
+
 import java.util.HashMap;
 
 import static COMP2042_CW_angjiahau.Models.Turtle.PLATFORM_RESOURCE_PATH;
@@ -9,21 +14,12 @@ public class WetTurtle extends SinkingPlatform {
 
 	@Override
 	public void act(long now) {
-		if (now/900000000  % 4 ==0) {
-			setImage(WetTurtleAnimation.get("wetturtleAnimation2"));
-			setSunk(false);
-		}
-		else if (now/900000000 % 4 == 1) {
-			setImage(WetTurtleAnimation.get("Turtle"));
-			setSunk(false);
-		}
-		else if (now/900000000 %4 == 2) {
-			setImage(WetTurtleAnimation.get("wetturtleAnimation3"));
-			setSunk(false);
-		} else if (now/900000000 %4 == 3) {
-			setImage(WetTurtleAnimation.get("wetturtleAnimation4"));
+
+		 if (now/900000000 %4 == 3) {
 			setSunk(true);
-		}
+		}else{
+		 	setSunk(false);
+		 }
 
 		move(speed , 0);
 		if (getX() > 600 && getSpeed()>0)
@@ -36,7 +32,6 @@ public class WetTurtle extends SinkingPlatform {
 		addHashWetTurtle(w,h);
 		setX(xpos);
 		setY(ypos);
-		setImage(WetTurtleAnimation.get("wetturtleAnimation2"));
 	}
 
 	public void addHashWetTurtle(int w,int h){
@@ -44,6 +39,19 @@ public class WetTurtle extends SinkingPlatform {
 		for(int animationImages=0;animationImages<=4;animationImages++) {
 			WetTurtleAnimation.put("wetturtleAnimation"+animationImages, new Image(PLATFORM_RESOURCE_PATH + "TurtleAnimation" + animationImages + "Wet.png", w, h, true, true));
 		}
+	}
+
+	public void playWetTurtleAnimation(){
+		Timeline timeline = new Timeline(
+				new KeyFrame(Duration.seconds(0), new KeyValue(imageProperty(),WetTurtleAnimation.get("Turtle"))),
+				new KeyFrame(Duration.seconds(1), new KeyValue(imageProperty(),WetTurtleAnimation.get("wetturtleAnimation2"))),
+				new KeyFrame(Duration.seconds(2), new KeyValue(imageProperty(),WetTurtleAnimation.get("wetturtleAnimation3"))),
+				new KeyFrame(Duration.seconds(3), new KeyValue(imageProperty(),WetTurtleAnimation.get("wetturtleAnimation4"))),
+				new KeyFrame(Duration.seconds(4), new KeyValue(imageProperty(), null))
+		);
+
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		timeline.play();
 	}
 
 }

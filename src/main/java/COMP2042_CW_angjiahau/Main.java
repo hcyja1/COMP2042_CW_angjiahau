@@ -118,6 +118,7 @@ public class Main extends Application {
 	
 	public void stop() {	
 		timer.stop();
+		music.stopMusic();
 	}
 	
     

@@ -3,15 +3,14 @@ package COMP2042_CW_angjiahau.Screens;
 import COMP2042_CW_angjiahau.Models.BackgroundImage;
 import COMP2042_CW_angjiahau.Models.Buttons;
 import COMP2042_CW_angjiahau.Controllers.World;
-import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
+
+
 
 public class InfoScreen extends World {
 	Buttons startLabel;
 	Buttons backButton;
 	Boolean goBack=false;
-	Boolean startGame = false;
+
 
 	public InfoScreen() {
 
@@ -22,14 +21,9 @@ public class InfoScreen extends World {
 		backButton = new Buttons("BACKButton",15,10,150,150);
 		add(backButton);
 
-		backButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
-			public void handle(MouseEvent event) {
-				SetGoBack();
-			}
-		});
+		backButton.setOnMouseClicked(event-> SetGoBack());
 
-		setOnKeyPressed(new EventHandler<KeyEvent>() {
-			public void handle(KeyEvent event){
+		setOnKeyPressed(event-> {
 				switch(event.getCode()) {
 
 					case ENTER:
@@ -43,9 +37,9 @@ public class InfoScreen extends World {
 					default:
 						break;
 				}
-			}
-		});
-	}
+			});
+		}
+
 
 	@Override
 	public void act(long now) {

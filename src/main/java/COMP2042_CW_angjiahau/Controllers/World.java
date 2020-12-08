@@ -23,7 +23,8 @@ public abstract class World extends Pane {
     private AnimationTimer timer;
     protected boolean switchScene;
     Turtle turtle;
-
+	List<WetTurtle>  wetturtles;
+	List<Turtle>  turtles;
 
     public World() {
     	
@@ -88,16 +89,19 @@ public abstract class World extends Pane {
     	this.timer=timer;   	
     }
 
+
+
     public void start() {    	
     	createTimer();
     	timer.start();
     	switchScene = false;
+		wetturtles = getObjects(WetTurtle.class);
+		turtles = getObjects(Turtle.class);
 
-		List<WetTurtle> wetturtles = getObjects(WetTurtle.class);
 		for(WetTurtle wetturtle : wetturtles){
 			wetturtle.playWetTurtleAnimation();
 		}
-		List<Turtle> turtles = getObjects(Turtle.class);
+
     	for(Turtle turtle : turtles){
     		turtle.playTurtleAnimation();
 		}
@@ -106,9 +110,16 @@ public abstract class World extends Pane {
 
     public void stop() {
 
-
     	switchScene = true;
     	timer.stop();
+
+		for(WetTurtle wetturtle : wetturtles){
+			wetturtle.stopWetTurtleAnimation();
+		}
+
+		for(Turtle turtle : turtles){
+			turtle.stopTurtleAnimation();
+		}
 
     }
     

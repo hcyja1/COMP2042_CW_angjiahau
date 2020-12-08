@@ -20,6 +20,7 @@ public class Level extends World {
 	ends.add(new End(141 + 141-13+141-13+1,96));
 	ends.add(new End(141 + 141-13+141-13+141-13+3,96));
 
+
 	animal = new Animal("froggerUp");
 	add(animal);
 

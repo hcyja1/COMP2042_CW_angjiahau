@@ -1,11 +1,8 @@
 package COMP2042_CW_angjiahau.Screens;
-
-import javafx.event.EventHandler;
 import COMP2042_CW_angjiahau.Models.BackgroundImage;
 import COMP2042_CW_angjiahau.Models.Buttons;
 import COMP2042_CW_angjiahau.Controllers.World;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
+
 
 
 public class StartingScreen extends World{
@@ -21,14 +18,9 @@ public class StartingScreen extends World{
 		infoButton = new Buttons("INFOButton",150,500,350,150);
 		add(infoButton);
 
-		infoButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
-			public void handle(MouseEvent event) {
-				stop();
-			}
-		});
+		infoButton.setOnMouseClicked(event-> stop());
 
-		setOnKeyPressed(new EventHandler<KeyEvent>() {
-			public void handle(KeyEvent event){
+		setOnKeyPressed(event-> {
 				switch(event.getCode()) {
 					case I:
 						stop();
@@ -41,10 +33,11 @@ public class StartingScreen extends World{
 					default:
 						break;
 				}
-			}
-		});
+			});
 
-	}
+		}
+
+
 
 	@Override
 	public void act(long now) {

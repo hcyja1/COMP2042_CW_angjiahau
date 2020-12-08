@@ -7,9 +7,7 @@ import javafx.scene.image.Image;
 
 public class Buttons extends Actor {
 	Image startLabel;
-	
-	
-	
+
 	public static final String IMAGE_RESOURCE_PATH = RESOURCE_PATH + "misc/";
 	@Override
 	public void act(long now) {

@@ -11,6 +11,7 @@ import static COMP2042_CW_angjiahau.Models.Turtle.PLATFORM_RESOURCE_PATH;
 
 public class WetTurtle extends SinkingPlatform {
 	HashMap<String,Image> WetTurtleAnimation = new HashMap<String,Image>();
+	Timeline timeline;
 
 	@Override
 	public void act(long now) {
@@ -42,7 +43,7 @@ public class WetTurtle extends SinkingPlatform {
 	}
 
 	public void playWetTurtleAnimation(){
-		Timeline timeline = new Timeline(
+		 timeline = new Timeline(
 				new KeyFrame(Duration.seconds(0), new KeyValue(imageProperty(),WetTurtleAnimation.get("Turtle"))),
 				new KeyFrame(Duration.seconds(1), new KeyValue(imageProperty(),WetTurtleAnimation.get("wetturtleAnimation2"))),
 				new KeyFrame(Duration.seconds(2), new KeyValue(imageProperty(),WetTurtleAnimation.get("wetturtleAnimation3"))),
@@ -52,6 +53,10 @@ public class WetTurtle extends SinkingPlatform {
 
 		timeline.setCycleCount(Timeline.INDEFINITE);
 		timeline.play();
+	}
+
+	public void stopWetTurtleAnimation(){
+		timeline.stop();
 	}
 
 }

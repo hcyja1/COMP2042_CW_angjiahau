@@ -1,27 +1,17 @@
 package COMP2042_CW_angjiahau.Models;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
-
 import java.util.HashMap;
 
 import static COMP2042_CW_angjiahau.Models.Turtle.PLATFORM_RESOURCE_PATH;
 
 public class WetTurtle extends SinkingPlatform {
-	HashMap<String,Image> WetTurtleAnimation = new HashMap<String,Image>();
+	HashMap<String,Image> WetTurtleAnimation = new HashMap<>();
 	Timeline timeline;
 
 	@Override
 	public void act(long now) {
-
-		 if (now/900000000 %4 == 3) {
-			setSunk(true);
-		}else{
-		 	setSunk(false);
-		 }
-
 		move(speed , 0);
 		if (getX() > 600 && getSpeed()>0)
 			setX(-200);
@@ -44,13 +34,12 @@ public class WetTurtle extends SinkingPlatform {
 
 	public void playWetTurtleAnimation(){
 		 timeline = new Timeline(
-				new KeyFrame(Duration.seconds(0), new KeyValue(imageProperty(),WetTurtleAnimation.get("Turtle"))),
+				new KeyFrame(Duration.seconds(0), event -> setSunk(false),new KeyValue(imageProperty(),WetTurtleAnimation.get("Turtle"))),
 				new KeyFrame(Duration.seconds(1), new KeyValue(imageProperty(),WetTurtleAnimation.get("wetturtleAnimation2"))),
 				new KeyFrame(Duration.seconds(2), new KeyValue(imageProperty(),WetTurtleAnimation.get("wetturtleAnimation3"))),
-				new KeyFrame(Duration.seconds(3), new KeyValue(imageProperty(),WetTurtleAnimation.get("wetturtleAnimation4"))),
-				new KeyFrame(Duration.seconds(4), new KeyValue(imageProperty(), null))
+				new KeyFrame(Duration.seconds(3), event -> setSunk(true),  new KeyValue(imageProperty(),WetTurtleAnimation.get("wetturtleAnimation4"))),
+				new KeyFrame(Duration.seconds(4),  new KeyValue(imageProperty(), null))
 		);
-
 		timeline.setCycleCount(Timeline.INDEFINITE);
 		timeline.play();
 	}
@@ -58,6 +47,7 @@ public class WetTurtle extends SinkingPlatform {
 	public void stopWetTurtleAnimation(){
 		timeline.stop();
 	}
+
 
 }
 

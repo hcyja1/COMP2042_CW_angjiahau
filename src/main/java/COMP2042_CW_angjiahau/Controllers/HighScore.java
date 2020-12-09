@@ -1,7 +1,6 @@
 package COMP2042_CW_angjiahau.Controllers;
 import javafx.scene.image.Image;
 import static COMP2042_CW_angjiahau.Main.RESOURCE_PATH;
-
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -9,7 +8,6 @@ import java.util.stream.Collectors;
 public class HighScore extends Actor {
 	static List<Integer> highscorelist;
 	Image im1;
-	public static Boolean scoreHigher=false;
 	public static final String HIGHSCORE_RESOURCE_PATH = RESOURCE_PATH + "/highscore/";
 	public static final String HIGHSCOREFILE_RESOURCE_PATH = RESOURCE_PATH.replace("file:","") + "/highscore/";
 
@@ -68,8 +66,8 @@ public class HighScore extends Actor {
 			}
 
 	public static Boolean checkHigher(int y) {
-		for (int i = 0; i < highscorelist.size(); i++) {
-			if (y >= highscorelist.get(i) ) {
+		for (Integer integer : highscorelist) {
+			if (y >= integer) {
 				return true;
 			}
 		}

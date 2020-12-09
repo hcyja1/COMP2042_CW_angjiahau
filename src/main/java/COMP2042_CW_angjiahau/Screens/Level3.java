@@ -1,5 +1,4 @@
 package COMP2042_CW_angjiahau.Screens;
-import COMP2042_CW_angjiahau.Models.Animal;
 import COMP2042_CW_angjiahau.Controllers.Level;
 import COMP2042_CW_angjiahau.Models.BackgroundImage;
 import COMP2042_CW_angjiahau.Models.Digit;
@@ -14,45 +13,37 @@ import java.io.IOException;
 
 
 public class Level3 extends Level {
-	 Animal animal;
 	 
 	public Level3()  {
 		//add background image
 				BackgroundImage froggerback = new BackgroundImage("level3background");
 				add(froggerback);
 
-				//Add platforms	
-				add(new Log(150, 0, 166, 0.75,3) );		
-				add(new Log(150, 220, 166, 0.75,3) );
-				add(new Log(150, 440, 166, 0.74,3) );
-				add(new Log(300, 0, 276, -2,1) );
-				add(new Log(300, 400, 276, -2,1) );
-								
-				add(new Turtle(600, 217, -2, 130, 130));
-				add(new WetTurtle(400, 217, -2, 130, 130));
-				add(new WetTurtle(200, 217, -2, 130, 130));
+				add(new Obstacle(0, Rows.ROW1.getValue(), 1, 120, 120, "bigTruck"));
+				add(new Obstacle(300, Rows.ROW1.getValue(), 1, 120, 120, "bigTruck"));
+				add(new Obstacle(600, Rows.ROW1.getValue(), 1, 120, 120, "truck1"));
+				add(new Obstacle(100, (Rows.ROW2.getValue())-10, -3, 50, 50, "racecar"));
+				add(new Obstacle(400, (Rows.ROW2.getValue())-10, -3, 50, 50, "racecar"));
+				add(new Obstacle(550, (Rows.ROW2.getValue())-10, -3, 50, 50, "racecar"));
+				add(new Obstacle(0,  Rows.ROW3.getValue(), 1, 200, 200, "longTruck"));
+				add(new Obstacle(500,  Rows.ROW3.getValue(), 1, 200, 200, "longTruck"));
+				add(new Obstacle(500, (Rows.ROW4.getValue())-10, 5, 50, 50, "racecar"));
+				add(new Obstacle(100, (Rows.ROW4.getValue())-10, 5, 50, 50, "racecar"));
+				add(new Obstacle(550, Rows.ROW5.getValue(), -2, 200, 200, "longTruck"));
+				add(new Obstacle(300, Rows.ROW5.getValue(), -2, 120, 120, "bigTruck"));
+				add(new Obstacle(400, (Rows.ROW6.getValue())+4, 4, 50, 50, "racecar"));
+				add(new Obstacle(50, (Rows.ROW6.getValue())+4, 4, 50, 50, "racecar"));
+				add(new Log(300, 0, Rows.ROW8.getValue(), -2,1) );
+				add(new Log(300, 400, Rows.ROW8.getValue(), -2,1) );
+				add(new Turtle(600, Rows.ROW9.getValue(), -2, 130, 130));
+				add(new WetTurtle(400, Rows.ROW9.getValue(), -2, 130, 130));
+				add(new WetTurtle(200, Rows.ROW9.getValue(), -2, 130, 130));
+				add(new Log(150, 0, Rows.ROW10.getValue(), 0.75,3) );
+				add(new Log(150, 220, Rows.ROW10.getValue(), 0.75,3) );
+				add(new Log(150, 440, Rows.ROW10.getValue(), 0.74,3) );
 
-				//intialize starting main actor image 
 				getAnimal().toFront();
-
-				//add obstacles
-				add(new Obstacle(0, 649, 1, 120, 120, "bigTruck"));
-				add(new Obstacle(300, 649, 1, 120, 120, "bigTruck"));				
-				add(new Obstacle(550, 435, -2, 200, 200, "longTruck"));
-				add(new Obstacle(300, 435, -2, 120, 120, "bigTruck"));
-				add(new Obstacle(600, 649, 1, 120, 120, "truck1"));
-				add(new Obstacle(100, 587, -3, 50, 50, "racecar"));
-				add(new Obstacle(400, 587, -3, 50, 50, "racecar"));
-				add(new Obstacle(550, 587, -3, 50, 50, "racecar"));
-				add(new Obstacle(0, 540, 1, 200, 200, "longTruck"));
-				add(new Obstacle(500, 540, 1, 200, 200, "longTruck"));
-				add(new Obstacle(500, 480, 5, 50, 50, "racecar"));
-				add(new Obstacle(100, 480, 5, 50, 50, "racecar"));
-				add(new Obstacle(400, 380, 4, 50, 50, "racecar"));
-				add(new Obstacle(50, 380, 4, 50, 50, "racecar"));
-
 				getAnimal().waterLevel(300);
-				
 				add(new Digit(0, 30, 550, 40));
 				add(new HighScore("hi-scoreImage"));						
 	}

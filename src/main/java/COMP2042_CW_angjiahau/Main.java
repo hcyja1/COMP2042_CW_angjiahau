@@ -73,7 +73,7 @@ public class Main extends Application {
 		stageController.addScreen("Level9",level9);
 	    stageController.addScreen("Level10",level10);
 
-	    stageController.activate("StartingScreen");
+	    stageController.activate("Level10");
 	    stageController.startScene();
 
 		 //make window unresizable & start

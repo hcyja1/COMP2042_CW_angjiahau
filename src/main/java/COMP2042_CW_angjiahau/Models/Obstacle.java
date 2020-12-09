@@ -25,7 +25,5 @@ public class Obstacle extends Actor {
 		setRotate(180);
 		}
 	}
-	
-	
 
 }

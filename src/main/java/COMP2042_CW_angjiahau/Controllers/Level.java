@@ -9,9 +9,29 @@ import javafx.animation.AnimationTimer;
 
 public class Level extends World {
 	 private final Animal animal;
-
 	ArrayList<End> ends = new ArrayList<>();
 	ArrayList<Digit> digits = new ArrayList<>();
+
+	public enum Rows{
+		ROW1(649),
+		ROW2(597),
+		ROW3(540),
+		ROW4(490),
+		ROW5(435),
+		ROW6(376),
+		ROW7(329),
+		ROW8(276),
+		ROW9(217),
+		ROW10(166);
+
+		private final int yCoordinate;
+		Rows(final int yCoordinate) {
+			this.yCoordinate = yCoordinate;
+		}
+		public int getValue() { return this.yCoordinate; }
+
+	}
+
 	public Level() {
 	//set 5 slots for frog to be filled in 
 	ends.add(new End(13,96));
@@ -19,7 +39,6 @@ public class Level extends World {
 	ends.add(new End(141 + 141-13,96));
 	ends.add(new End(141 + 141-13+141-13+1,96));
 	ends.add(new End(141 + 141-13+141-13+141-13+3,96));
-
 
 	animal = new Animal("froggerUp");
 	add(animal);
@@ -74,6 +93,7 @@ public class Level extends World {
             shift+=30;
         }
 }
+
 	    // Resets visual for score & and end
 	    //also resets activation state of end 
 	    @Override

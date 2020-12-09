@@ -18,7 +18,6 @@ public class Animal extends Actor {
 	int points = 0;
 	int end = 0;
 	private boolean second = false;
-	private boolean keyReleased = false;
 	boolean noMove = false;
 	double movement = 13.3333333*2;
 	double movementX = 10.666666*2;
@@ -29,10 +28,9 @@ public class Animal extends Actor {
 	double w = 800;
 	double waterLevel =0;
 
-
-	ArrayList<End> inter = new ArrayList<End>();
-	HashMap<String,Image> carDeathAnimation = new HashMap<String, Image>();
-	HashMap<String,Image> waterDeathAnimation = new HashMap<String,Image>();
+	ArrayList<End> inter = new ArrayList<>();
+	HashMap<String,Image> carDeathAnimation = new HashMap<>();
+	HashMap<String,Image> waterDeathAnimation = new HashMap<>();
 	Timeline carDeathT;
 	Timeline waterDeathT;
 
@@ -44,7 +42,6 @@ public class Animal extends Actor {
 		startingPosition();
 		addHashCar();
 		addHashWater();
-
 
 		setOnKeyPressed(event-> {
 			if (noMove) {
@@ -102,7 +99,6 @@ public class Animal extends Actor {
 
 			});
 
-
 		setOnKeyReleased(event -> {
 			
 			if(noMove) {					
@@ -116,7 +112,6 @@ public class Animal extends Actor {
 					move(0, -movement);
 	              setImage(froggerNoJump);
 	               second = false;
-					keyReleased = true;
 					break;
 	             
 				case LEFT:
@@ -124,15 +119,14 @@ public class Animal extends Actor {
 					 move(-movementX, 0);
 	            	setImage(froggerNoJump);
 	            	second = false;
-					keyReleased = true;
+
 	            	 break;
 				
 				case DOWN:
 				case S : 					
 					move(0, movement);
-	            	 //setImage(froggerNoJump);
-	            	 //second = false;
-					keyReleased = true;
+	            	 setImage(froggerNoJump);
+	            	 second = false;
 	            	 break;
 				
 				case RIGHT:
@@ -140,7 +134,7 @@ public class Animal extends Actor {
 					 move(movementX, 0);
 	            	 setImage(froggerNoJump);
 	            	 second = false;
-					keyReleased = true;
+
 	            	 break;
 					
 				default:
@@ -148,10 +142,6 @@ public class Animal extends Actor {
 						}
 					}
 				});
-
-
-
-
 
 }
 
@@ -217,12 +207,11 @@ public class Animal extends Actor {
 					new KeyFrame(Duration.millis(250), new KeyValue(imageProperty(), waterDeathAnimation.get("waterDeathAnimation2"))),
 					new KeyFrame(Duration.millis(500), new KeyValue(imageProperty(), waterDeathAnimation.get("waterDeathAnimation3"))),
 					new KeyFrame(Duration.millis(750), new KeyValue(imageProperty(), waterDeathAnimation.get("waterDeathAnimation4"))),
-					new KeyFrame(Duration.seconds(1), new KeyValue(imageProperty(), null))
+					new KeyFrame(Duration.seconds(1), event-> deathReset(), new KeyValue(imageProperty(), null))
 			);
 		}
 		waterDeathT.setCycleCount(1);
 		waterDeathT.play();
-		waterDeathT.setOnFinished( event-> deathReset() );
 	}
 
 	public void carDeathAnimation(){
@@ -232,12 +221,11 @@ public class Animal extends Actor {
 					new KeyFrame(Duration.millis(250), new KeyValue(imageProperty(), carDeathAnimation.get("carDeathAnimation2"))),
 					new KeyFrame(Duration.millis(500), new KeyValue(imageProperty(), carDeathAnimation.get("carDeathAnimation3"))),
 					new KeyFrame(Duration.millis(750), new KeyValue(imageProperty(), carDeathAnimation.get("carDeathAnimation4"))),
-					new KeyFrame(Duration.seconds(1), new KeyValue(imageProperty(), null))
+					new KeyFrame(Duration.seconds(1), event-> deathReset() ,new KeyValue(imageProperty(), null))
 			);
 		}
 		carDeathT.setCycleCount(1);
 		carDeathT.play();
-		carDeathT.setOnFinished( event-> deathReset() );
 	}
 
 	public void addHashCar(){

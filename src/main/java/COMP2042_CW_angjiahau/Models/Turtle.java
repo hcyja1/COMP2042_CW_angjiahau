@@ -35,7 +35,6 @@ public class Turtle extends Platform {
 	}
 
 	public void playTurtleAnimation(){
-
 		timeline = new Timeline(
 				new KeyFrame(Duration.seconds(0), new KeyValue(imageProperty(),TurtleAnimation.get("turtleAnimation1"))),
 				new KeyFrame(Duration.seconds(1), new KeyValue(imageProperty(),TurtleAnimation.get("turtleAnimation2"))),

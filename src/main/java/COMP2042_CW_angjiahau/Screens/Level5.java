@@ -1,5 +1,4 @@
 package COMP2042_CW_angjiahau.Screens;
-import COMP2042_CW_angjiahau.Models.Animal;
 import COMP2042_CW_angjiahau.Controllers.Level;
 import COMP2042_CW_angjiahau.Models.BackgroundImage;
 import COMP2042_CW_angjiahau.Models.Digit;
@@ -13,39 +12,38 @@ import java.io.IOException;
 
 
 public class Level5 extends Level {
-	 Animal animal;
 	 
 	public Level5()  {
 		//add background image
 				BackgroundImage froggerback = new BackgroundImage("level5background");
 				add(froggerback);
-				
-				
-				//Add platforms	
-		add(new Log(150, 0, 440, 0.75,3) );
-		add(new Log(150, 220, 440, 0.75,3) );
-		add(new Log(150, 440, 440, 0.74,3) );
-		add(new Turtle(500, 376, -1, 130, 130));
-		add(new Turtle(300, 376, -1, 130, 130));
-		add(new Log(300, 0, 329, -2,1) );
-		add(new Log(300, 400, 329, -2,1) );
-		add(new WetTurtle(700, 271, -1, 130, 130));
-		add(new WetTurtle(350, 271, -1, 130, 130));
-		add(new Log(150, 50, 222, 0.75,3) );
-		add(new Log(150, 270, 222, 0.75,3) );
-		add(new Log(150, 490, 222, 0.75,3) );
-		add(new WetTurtle(300, 162, -1, 130, 130));
-		add(new WetTurtle(600, 162, -1, 130, 130));
-		add(new Turtle(300, 162, -1, 130, 130));
-		add(new WetTurtle(600, 644, -1, 130, 130));
-		add(new WetTurtle(100, 644, -1, 130, 130));
-		add(new Log(300, 0, 597, -2,1) );
-		add(new Log(300, 400, 597, -2,1) );
-		add(new Log(150, 600, 540, 0.75,3) );
-		add(new Log(150, 150, 540, 0.75,3) );
-		add(new Log(150, 410, 540, 0.74,3) );
-		add(new WetTurtle(250, 490, -1, 130, 130));
-		add(new WetTurtle(600, 490, -1, 130, 130));
+
+
+				add(new WetTurtle(600, Rows.ROW1.getValue()-5, -1, 130, 130));
+				add(new WetTurtle(100, Rows.ROW1.getValue()-5, -1, 130, 130));
+				add(new Log(300, 0, Rows.ROW2.getValue(), -2,1) );
+				add(new Log(300, 400, Rows.ROW2.getValue(), -2,1) );
+				add(new Log(150, 600, Rows.ROW3.getValue(), 0.75,3) );
+				add(new Log(150, 150, Rows.ROW3.getValue(), 0.75,3) );
+				add(new Log(150, 410, Rows.ROW3.getValue(), 0.74,3) );
+				add(new WetTurtle(250, Rows.ROW4.getValue()-4, -1, 130, 130));
+				add(new WetTurtle(600, Rows.ROW4.getValue()-4, -1, 130, 130));
+				add(new Log(150, 0,  Rows.ROW5.getValue()+5, 0.75,3) );
+				add(new Log(150, 220, Rows.ROW5.getValue()+5, 0.75,3) );
+				add(new Log(150, 440, Rows.ROW5.getValue()+5, 0.74,3) );
+				add(new Turtle(500, Rows.ROW6.getValue(), -1, 130, 130));
+				add(new Turtle(300, Rows.ROW6.getValue(), -1, 130, 130));
+				add(new Log(300, 0, Rows.ROW7.getValue(), -2,1) );
+				add(new Log(300, 400, Rows.ROW7.getValue(), -2,1) );
+				add(new WetTurtle(700, Rows.ROW8.getValue()-5, -1, 130, 130));
+				add(new WetTurtle(350, Rows.ROW8.getValue()-5, -1, 130, 130));
+				add(new Log(150, 50, Rows.ROW9.getValue()+5, 0.75,3) );
+				add(new Log(150, 270, Rows.ROW9.getValue()+5, 0.75,3) );
+				add(new Log(150, 490, Rows.ROW9.getValue()+5, 0.75,3) );
+				add(new WetTurtle(300, Rows.ROW10.getValue()-4, -1, 130, 130));
+				add(new WetTurtle(600, Rows.ROW10.getValue()-4, -1, 130, 130));
+				add(new Turtle(300, Rows.ROW10.getValue()-4, -1, 130, 130));
+
 
 				
 				//intialize starting main actor image 

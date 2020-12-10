@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import COMP2042_CW_angjiahau.Screens.*;
 
 public class Main extends Application {
-	StartingScreen startingscreen;
 	Music music;
 	AnimationTimer timer;
 	StartingScreen startingScreen;
@@ -31,7 +30,6 @@ public class Main extends Application {
 
 	Scene scene;
 	StageController stageController;
-	World world;
 	public static final String RESOURCE_PATH = "file:src/main/resources/";
 	
 	
@@ -73,10 +71,10 @@ public class Main extends Application {
 		stageController.addScreen("Level9",level9);
 	    stageController.addScreen("Level10",level10);
 
-	    stageController.activate("Level10");
+	    stageController.activate("StartingScreen");
 	    stageController.startScene();
 
-		 //make window unresizable & start
+
 	    firstStage.setResizable(false);   
 	    firstStage.setScene(scene);
 	    firstStage.show();

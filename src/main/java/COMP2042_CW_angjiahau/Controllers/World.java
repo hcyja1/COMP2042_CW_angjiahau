@@ -22,7 +22,6 @@ import javafx.scene.layout.Pane;
 public abstract class World extends Pane {
     private AnimationTimer timer;
     protected boolean switchScene;
-    Turtle turtle;
 	List<WetTurtle>  wetturtles;
 	List<Turtle>  turtles;
 
@@ -97,11 +96,9 @@ public abstract class World extends Pane {
     	switchScene = false;
 		wetturtles = getObjects(WetTurtle.class);
 		turtles = getObjects(Turtle.class);
-
 		for(WetTurtle wetturtle : wetturtles){
 			wetturtle.playWetTurtleAnimation();
 		}
-
     	for(Turtle turtle : turtles){
     		turtle.playTurtleAnimation();
 		}

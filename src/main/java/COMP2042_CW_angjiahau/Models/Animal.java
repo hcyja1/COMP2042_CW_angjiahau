@@ -8,6 +8,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 
 
@@ -18,7 +19,7 @@ public class Animal extends Actor {
 	int points = 0;
 	int end = 0;
 	private boolean second = false;
-	boolean noMove = false;
+	boolean noMove = true;
 	double movement = 13.3333333*2;
 	double movementX = 10.666666*2;
 	int imgSize = 40;
@@ -45,105 +46,61 @@ public class Animal extends Actor {
 
 		setOnKeyPressed(event-> {
 			if (noMove) {
+			}
 
-			} 	else {
+			else{
 				music.hopSound();
-
+					if(event.getEventType() == KeyEvent.KEY_RELEASED){
+						second = true;
+					}
 					switch (event.getCode()) {
 						case UP:
 						case W:
 							move(0, -movement);
-							changeScore = false;
 							setImage(second ? froggerNoJump : froggerJump);
-
-							if (getY() < w) {
+							if (getY() < w && second) {
 								changeScore = true;
 								w = getY();
-								points+=10;
+								points += 10;
 							}
-
 							setRotate(0);
 							break;
 
 						case LEFT:
 						case A:
-							move(-movementX, 0);
-							changeScore = false;
-							setImage(second ? froggerNoJump : froggerJump);
-							setRotate(-90);
-							break;
+								move(-movementX, 0);
+								changeScore = false;
+								setImage(second ? froggerNoJump : froggerJump);
+								setRotate(-90);
+								break;
+
 
 						case DOWN:
 						case S:
-							move(0, movement);
-							changeScore = false;
-							setImage(second ? froggerNoJump : froggerJump);
-							setRotate(-180);
+								move(0, movement);
+								changeScore = false;
+								setImage(second ? froggerNoJump : froggerJump);
+								setRotate(-180);
 
 							break;
 
 						case RIGHT:
 						case D:
-							move(movementX, 0);
-							changeScore = false;
-							setImage(second ? froggerNoJump : froggerJump);
-							setRotate(90);
+								move(movementX, 0);
+								changeScore = false;
+								setImage(second ? froggerNoJump : froggerJump);
+								setRotate(90);
 							break;
 
 						default:
 							break;
 					}
-					second = !second;
-
+				second =!second;
 				}
+		});
+		setOnKeyReleased(getOnKeyPressed());
 
-			});
-
-		setOnKeyReleased(event -> {
-			
-			if(noMove) {					
-			} 			
-			else {
-				music.hopSound();							
-				switch(event.getCode()) {
-				
-				case UP:
-				case W :
-					move(0, -movement);
-	              setImage(froggerNoJump);
-	               second = false;
-					break;
-	             
-				case LEFT:
-				case A :					
-					 move(-movementX, 0);
-	            	setImage(froggerNoJump);
-	            	second = false;
-
-	            	 break;
-				
-				case DOWN:
-				case S : 					
-					move(0, movement);
-	            	 setImage(froggerNoJump);
-	            	 second = false;
-	            	 break;
-				
-				case RIGHT:
-				case D : 				 	
-					 move(movementX, 0);
-	            	 setImage(froggerNoJump);
-	            	 second = false;
-
-	            	 break;
-					
-				default:
-						break;						
-						}
-					}
-				});
-
-}
+	}
 
 
 	@Override
@@ -198,7 +155,6 @@ public class Animal extends Actor {
 			music.plunkSound();
 		}
 	}
-
 
 	public void waterDeathAnimation(){
 		if(waterDeathT == null) {

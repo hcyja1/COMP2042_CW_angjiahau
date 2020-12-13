@@ -2,6 +2,8 @@ package COMP2042_CW_angjiahau.Screens;
 import COMP2042_CW_angjiahau.Controllers.Level;
 import COMP2042_CW_angjiahau.Models.*;
 import COMP2042_CW_angjiahau.Controllers.HighScore;
+import COMP2042_CW_angjiahau.Models.Display.BackgroundImage;
+import COMP2042_CW_angjiahau.Models.Display.Digit;
 import javafx.scene.control.Alert;
 
 import java.io.IOException;
@@ -53,20 +55,7 @@ public class Level10 extends Level {
         }
         if (getAnimal().getStop()) {
             stop();
-            try {
-                HighScore.HighScoreController("Level10", getAnimal().getPoints());
-            } catch(IOException e) {
-                e.printStackTrace();
-            }
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("CONGRATULATIONS! You Have Won!");
-            if(HighScore.checkHigher(getAnimal().getPoints())){
-                alert.setHeaderText("You have a new High Score: "+getAnimal().getPoints()+"!");
-            }else {
-                alert.setHeaderText("Your High Score: " + getAnimal().getPoints() + "!");
-            }
-            alert.setContentText("Current Highscore List : " + HighScore.displayHighScore());
-            alert.show();
+            highScoreCaller();
         }
 
 

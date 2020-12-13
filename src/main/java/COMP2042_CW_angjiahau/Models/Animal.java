@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import COMP2042_CW_angjiahau.Controllers.Actor;
 import COMP2042_CW_angjiahau.Controllers.End;
+import COMP2042_CW_angjiahau.Controllers.Music;
+import COMP2042_CW_angjiahau.Models.Platforms.Platform;
+import COMP2042_CW_angjiahau.Models.Platforms.SinkingPlatform;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -22,7 +25,7 @@ public class Animal extends Actor {
 	boolean noMove = true;
 	double movement = 13.3333333*2;
 	double movementX = 10.666666*2;
-	int imgSize = 40;
+	private final int imgSize = 40;
 	boolean carDeath = false;
 	boolean waterDeath = false;
 	boolean changeScore = false;
@@ -58,7 +61,7 @@ public class Animal extends Actor {
 						case W:
 							move(0, -movement);
 							setImage(second ? froggerNoJump : froggerJump);
-							if (getY() < w && second) {
+							if ((getY() < w) && (event.getEventType() == KeyEvent.KEY_RELEASED)) {
 								changeScore = true;
 								w = getY();
 								points += 10;
@@ -170,6 +173,8 @@ public class Animal extends Actor {
 		waterDeathT.play();
 	}
 
+
+
 	public void carDeathAnimation(){
 		if(carDeathT == null) {
 			carDeathT = new Timeline(
@@ -196,6 +201,14 @@ public class Animal extends Actor {
 		}
 	}
 
+	public HashMap<String,Image> checkWaterHash(){
+		return waterDeathAnimation;
+	}
+
+	public HashMap<String,Image> checkCarHash(){
+		return carDeathAnimation;
+	}
+
 	public void deathReset(){
 		startingPosition();
 		setImage(new Image(FROG_RESOURCE_PATH + "froggerUp.png", imgSize, imgSize, true, true));
@@ -206,7 +219,6 @@ public class Animal extends Actor {
 		}
 		waterDeath = false;
 		carDeath = false;
-
 	}
 
 	public void checkoutOfBounds(){
@@ -220,6 +232,7 @@ public class Animal extends Actor {
 			move(-movement*2, 0);
 		}
 	}
+
 	public void startingPosition(){
 		setX(300);
 		setY(679.8 + movement);
@@ -236,7 +249,7 @@ public class Animal extends Actor {
 		return waterDeath = false;
 	}
 	public boolean getStop() {
-		return end==1;
+		return end==2;
 	}
 	
 	public int getPoints() {
@@ -244,11 +257,7 @@ public class Animal extends Actor {
 	}
 	
 	public boolean changeScore() {
-		if (changeScore) {
-			changeScore = false;
-			return true;
-		}
-		return false;
+		return changeScore;
 	}
 	
 	public void reset() {

@@ -1,14 +1,16 @@
 package COMP2042_CW_angjiahau.Screens;
 import COMP2042_CW_angjiahau.Controllers.*;
 import COMP2042_CW_angjiahau.Models.*;
+import COMP2042_CW_angjiahau.Models.Display.BackgroundImage;
+import COMP2042_CW_angjiahau.Models.Display.Digit;
+import COMP2042_CW_angjiahau.Models.Platforms.Log;
+import COMP2042_CW_angjiahau.Models.Platforms.Turtle;
+import COMP2042_CW_angjiahau.Models.Platforms.WetTurtle;
 import javafx.scene.control.Alert;
 import java.io.IOException;
 
 public class Level1 extends Level {
-	 Animal animal;
-	 StageController stageController;
-	 World world;
-	 
+
 	public Level1()  {
 
 		//add background image
@@ -40,7 +42,6 @@ public class Level1 extends Level {
 				add(new Log(150, 270, Rows.ROW7.getValue(), 0.75,3) );
 				add(new Log(150, 490, Rows.ROW7.getValue(), 0.75,3) );
 
-
 				getAnimal().toFront();
 				add(new Digit(0, 30, 550, 40));
 				add(new HighScore("hi-scoreImage"));
@@ -56,22 +57,7 @@ public class Level1 extends Level {
 		}
 		if (getAnimal().getStop()) {
 			stop();
-			try {
-				HighScore.HighScoreController("Level1", getAnimal().getPoints());
-			} catch(IOException e){
-				e.printStackTrace();
-				System.out.println("Error in File Controller");
-			}
-
-			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-			alert.setTitle("You Have Won The Round!");
-			if(HighScore.checkHigher(getAnimal().getPoints())){
-				alert.setHeaderText("You have a new High Score: "+ getAnimal().getPoints()+"!");
-			}else {
-				alert.setHeaderText("Your High Score: " + getAnimal().getPoints() + "!");
-			}
-			alert.setContentText("Current Highscore List : " + HighScore.displayHighScore());
-			alert.show();
+			highScoreCaller();
 		}
 	}
 	

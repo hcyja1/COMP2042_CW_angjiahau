@@ -22,7 +22,7 @@ public class HighScore extends Actor {
 		setY(20);	
 	}
 
-	public static List <Integer> HighScoreController(String levelNumber,int x) throws IOException {
+	public static List <Integer> HighScoreController(String levelNumber,int points) throws IOException {
 
 		 highscorelist = new ArrayList<>();
 		File highscorefile = new File(HIGHSCOREFILE_RESOURCE_PATH + "HighScore" +  levelNumber + ".txt");
@@ -31,7 +31,8 @@ public class HighScore extends Actor {
 				if (!highscorefile.exists()) {
 					highscorefile.createNewFile();
 				}
-				highscorelist.add(x);
+
+				highscorelist.add(points);
 
 				Scanner reader = new Scanner(highscorefile);
 				while (reader.hasNextLine()) {

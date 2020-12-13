@@ -1,12 +1,12 @@
 package COMP2042_CW_angjiahau.Screens;
 import COMP2042_CW_angjiahau.Controllers.Level;
-import COMP2042_CW_angjiahau.Models.BackgroundImage;
-import COMP2042_CW_angjiahau.Models.Digit;
+import COMP2042_CW_angjiahau.Models.Display.BackgroundImage;
+import COMP2042_CW_angjiahau.Models.Display.Digit;
 import COMP2042_CW_angjiahau.Controllers.HighScore;
-import COMP2042_CW_angjiahau.Models.Log;
+import COMP2042_CW_angjiahau.Models.Platforms.Log;
 import COMP2042_CW_angjiahau.Models.Obstacle;
-import COMP2042_CW_angjiahau.Models.Turtle;
-import COMP2042_CW_angjiahau.Models.WetTurtle;
+import COMP2042_CW_angjiahau.Models.Platforms.Turtle;
+import COMP2042_CW_angjiahau.Models.Platforms.WetTurtle;
 import javafx.scene.control.Alert;
 import java.io.IOException;
 
@@ -57,20 +57,7 @@ public class Level6 extends Level {
         }
         if (getAnimal().getStop()) {
             stop();
-            try {
-                HighScore.HighScoreController("Level6", getAnimal().getPoints());
-            } catch(IOException e) {
-                e.printStackTrace();
-            }
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("You Have Won The Round!");
-            if(HighScore.checkHigher(getAnimal().getPoints())){
-                alert.setHeaderText("You have a new High Score: "+getAnimal().getPoints()+"!");
-            }else {
-                alert.setHeaderText("Your High Score: " + getAnimal().getPoints() + "!");
-            }
-            alert.setContentText("Current Highscore List : " + HighScore.displayHighScore());
-            alert.show();
+            highScoreCaller();
         }
     }
 

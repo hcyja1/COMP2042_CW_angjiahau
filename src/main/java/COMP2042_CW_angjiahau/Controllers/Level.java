@@ -1,11 +1,13 @@
 package COMP2042_CW_angjiahau.Controllers;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
 import COMP2042_CW_angjiahau.Models.Animal;
-import COMP2042_CW_angjiahau.Models.Digit;
+import COMP2042_CW_angjiahau.Models.Display.Digit;
 import javafx.animation.AnimationTimer;
+import javafx.scene.control.Alert;
 
 public class Level extends World {
 	 private final Animal animal;
@@ -53,11 +55,30 @@ public class Level extends World {
 
 	@Override
 	public void act(long now) {
-			
+
 	}
 
 	public Animal getAnimal(){
 		return animal;
+	}
+
+	public void highScoreCaller(){
+		try {
+			HighScore.HighScoreController(getClass().getSimpleName(), getAnimal().getPoints());
+		} catch(IOException e){
+			e.printStackTrace();
+			System.out.println("Error in File Controller");
+		}
+
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle("You Have Won The Round!");
+		if(HighScore.checkHigher(getAnimal().getPoints())){
+			alert.setHeaderText("You have a new High Score: "+ getAnimal().getPoints()+"!");
+		}else {
+			alert.setHeaderText("Your High Score: " + getAnimal().getPoints() + "!");
+		}
+		alert.setContentText("Current Highscore List : " + HighScore.displayHighScore());
+		alert.show();
 	}
 
 	@Override

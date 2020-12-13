@@ -4,8 +4,8 @@ package COMP2042_CW_angjiahau.Controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import COMP2042_CW_angjiahau.Models.Turtle;
-import COMP2042_CW_angjiahau.Models.WetTurtle;
+import COMP2042_CW_angjiahau.Models.Platforms.Turtle;
+import COMP2042_CW_angjiahau.Models.Platforms.WetTurtle;
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

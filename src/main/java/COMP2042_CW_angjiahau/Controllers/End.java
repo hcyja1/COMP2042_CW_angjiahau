@@ -1,5 +1,4 @@
 package COMP2042_CW_angjiahau.Controllers;
-
 import javafx.scene.image.Image;
 
 public class End extends Actor {

@@ -146,7 +146,7 @@ public class Main extends Application {
     }
 
 	/**
-	 * This method creates and starts Animation Timer, and plays frogger music.
+	 * This method creates and starts Animation Timer, causing it to start sending action events to its listeners and plays frogger music.
 	 */
 	public void start() {
 		createTimer();

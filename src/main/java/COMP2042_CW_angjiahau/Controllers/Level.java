@@ -42,6 +42,7 @@ public class Level extends World {
 	ends.add(new End(141 + 141-13+141-13+1,96));
 	ends.add(new End(141 + 141-13+141-13+141-13+3,96));
 
+
 	animal = new Animal("froggerUp");
 	add(animal);
 
@@ -95,6 +96,11 @@ public class Level extends World {
 	        }
 	    });
 	}
+	public void showInitialHighScore(){
+		add(new Digit(0, 30, 550, 40));
+		add(new HighScore("hi-scoreImage"));
+	}
+
 	public void setNumber(int n) {
 		digits.forEach(new Consumer<Digit>() {
 			@Override

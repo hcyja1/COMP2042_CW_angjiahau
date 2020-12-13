@@ -1,21 +1,23 @@
 package COMP2042_CW_angjiahau.Screens;
 import COMP2042_CW_angjiahau.Controllers.Level;
 import COMP2042_CW_angjiahau.Models.Display.BackgroundImage;
-import COMP2042_CW_angjiahau.Models.Display.Digit;
-import COMP2042_CW_angjiahau.Controllers.HighScore;
 import COMP2042_CW_angjiahau.Models.Platforms.Log;
 import COMP2042_CW_angjiahau.Models.Obstacle;
 import COMP2042_CW_angjiahau.Models.Platforms.Turtle;
 import COMP2042_CW_angjiahau.Models.Platforms.WetTurtle;
-import javafx.scene.control.Alert;
-import java.io.IOException;
-
-
 
 public class Level2 extends Level {
 
+	/**
+	 * This method generates the second level of the game.
+	 * Firstly, each level has its own background image which is added in the method.
+	 * After that, the obstacles and platforms for each rows are added.
+	 * The values for the y-coordinates of the rows are fetched from an enumeration at {@link Level}
+	 * Main character is called to front so it does not get blocked by other variables
+	 * Initial high score showing value of 0 and label is shown on top right corner
+	 * Water Level is set.
+	 */
 	public Level2()  {
-		//add background image
 				BackgroundImage froggerback = new BackgroundImage("level2background");
 				add(froggerback);
 
@@ -46,14 +48,19 @@ public class Level2 extends Level {
 
 				getAnimal().toFront();
 				getAnimal().waterLevel(413);
-				add(new Digit(0, 30, 550, 40));
-				add(new HighScore("hi-scoreImage"));						
+				showInitialHighScore();
 	}
-	
-	
+
+	/**
+	 * Overriden method which is called in every frame as long as AnimationTimer is active.
+	 * This Overriden method makes sure the score is kept updated according to the level's occurrence.
+	 * It also makes sure that the game ends when 5 frogs are brought home to the end.
+	 * Lastly, the method makes sure after each round, a high score file for the level will be created(if it does not already exist)
+	 * the high score of the player will be compared to the existing(if any) high scores within the high score file, and stored if it is higher or equal to any of the existing high score values.
+	 * @param now is the Timestamp of the current frame given in nanoseconds. This value will be the same for all AnimationTimers called during one frame.
+	 */
 	@Override
 	public void act(long now) {
-		
 		if (getAnimal().changeScore()) {
 			setNumber(getAnimal().getPoints());
 		}
@@ -62,7 +69,11 @@ public class Level2 extends Level {
 			highScoreCaller();
 		}
 	}
-	        
+
+	/**
+	 * Makes sure Timer is started causing it to start sending action events to its listeners.
+	 * This method also makes sure each round is properly reset.
+	 */
 	@Override
 	public void start() {
 		super.start();

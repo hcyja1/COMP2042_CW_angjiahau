@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"COMP2042_CW_angjiahau.Screens","l":"StartingScreen"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"COMP2042_CW_angjiahau.Screens","l":"Level10"}]

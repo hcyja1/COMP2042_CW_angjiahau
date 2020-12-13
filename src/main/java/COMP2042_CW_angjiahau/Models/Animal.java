@@ -249,7 +249,7 @@ public class Animal extends Actor {
 		return waterDeath = false;
 	}
 	public boolean getStop() {
-		return end==2;
+		return end==1;
 	}
 	
 	public int getPoints() {

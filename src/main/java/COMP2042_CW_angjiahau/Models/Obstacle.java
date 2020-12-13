@@ -1,10 +1,11 @@
 package COMP2042_CW_angjiahau.Models;
 import static COMP2042_CW_angjiahau.Main.RESOURCE_PATH;
-
 import COMP2042_CW_angjiahau.Controllers.Actor;
 import javafx.scene.image.Image;
 
+
 public class Obstacle extends Actor {
+
 	private static final String OBSTACLE_RESOURCE_PATH = RESOURCE_PATH+"obstacles";
 	private int speed;
 	@Override

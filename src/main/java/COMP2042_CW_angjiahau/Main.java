@@ -65,7 +65,7 @@ public class Main extends Application {
 
 
 	/**
-	 * This methods adds Levels and Screens to the stageController object called, then starts the game.
+	 * This methods adds Levels and Screens (In ascending order) to the stageController object called, then starts the game.
 	 * 	 Method starts off by Assigning reference variables to their respective object Reference.
 	 * 	 After that, the stageController object will call the addScreen function which adds screens to be played and activated.
 	 * 	 The stage controller then activates the starting Screen for frogger game.
@@ -119,7 +119,6 @@ public class Main extends Application {
 	 */
 	public void createTimer() {
         timer = new AnimationTimer() {
-
 			/**
 			 * Overriden method which is called in every frame as long as AnimationTimer is active.
 			 * This Overriden method makes sure the scenes change according to user prompt and game stage.

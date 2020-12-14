@@ -51,34 +51,21 @@ public class Level4 extends Level {
 	}
 
 	/**
-	 * Overriden method which is called in every frame as long as AnimationTimer is active.
-	 * This Overriden method makes sure the score is kept updated according to the level's occurrence.
-	 * It also makes sure that the game ends when 5 frogs are brought home to the end.
-	 * Lastly, the method makes sure after each round, a high score file for the level will be created(if it does not already exist)
-	 * the high score of the player will be compared to the existing(if any) high scores within the high score file, and stored if it is higher or equal to any of the existing high score values.
+	 * Method which is called in every frame as long as AnimationTimer is active.
+	 * Inherits the act() method from {@link Level}
 	 * @param now is the Timestamp of the current frame given in nanoseconds. This value will be the same for all AnimationTimers called during one frame.
 	 */
 	@Override
 	public void act(long now) {
-				
-		if (getAnimal().changeScore()) {
-			setNumber(getAnimal().getPoints());
-		}
-		if (getAnimal().getStop()) {
-			stop();
-			highScoreCaller();
-		}
-				
+		super.act(now);
 	}
 
 	/**
-	 * Makes sure Timer is started causing it to start sending action events to its listeners.
-	 * This method also makes sure each round is properly reset.
+	 * This method inherits the start() method from {@link Level}
 	 */
 	@Override
 	public void start() {
 		super.start();
-		getAnimal().reset();
 	}
 	       
 	

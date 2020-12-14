@@ -94,8 +94,10 @@ public abstract class World extends Pane {
     	createTimer();
     	timer.start();
     	switchScene = false;
+
 		wetturtles = getObjects(WetTurtle.class);
 		turtles = getObjects(Turtle.class);
+
 		for(WetTurtle wetturtle : wetturtles){
 			wetturtle.playWetTurtleAnimation();
 		}

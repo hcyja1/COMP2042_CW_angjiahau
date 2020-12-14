@@ -2,7 +2,6 @@ package COMP2042_CW_angjiahau.Screens;
 import COMP2042_CW_angjiahau.Controllers.*;
 import COMP2042_CW_angjiahau.Models.*;
 import COMP2042_CW_angjiahau.Models.Display.BackgroundImage;
-import COMP2042_CW_angjiahau.Models.Display.Digit;
 import COMP2042_CW_angjiahau.Models.Platforms.Log;
 import COMP2042_CW_angjiahau.Models.Platforms.Turtle;
 import COMP2042_CW_angjiahau.Models.Platforms.WetTurtle;
@@ -11,7 +10,7 @@ import COMP2042_CW_angjiahau.Models.Platforms.WetTurtle;
 public class Level1 extends Level {
 
 	/**
-	 * This method generates the first level of the game.
+	 * This Constructor generates the first level of the game.
 	 * Firstly, each level has its own background image which is added in the method.
 	 * After that, the obstacles and platforms for each rows are added.
 	 * The values for the y-coordinates of the rows are fetched from an enumeration at {@link Level}
@@ -20,7 +19,6 @@ public class Level1 extends Level {
 	 * Water Level is set.
 	 */
 	public Level1()  {
-
 				BackgroundImage froggerback = new BackgroundImage("iKogsKW");
 				add(froggerback);
 

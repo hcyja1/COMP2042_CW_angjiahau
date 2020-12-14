@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"COMP2042_CW_angjiahau.Models"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"COMP2042_CW_angjiahau"},{"l":"COMP2042_CW_angjiahau.Controllers"},{"l":"COMP2042_CW_angjiahau.Models"},{"l":"COMP2042_CW_angjiahau.Models.Display"},{"l":"COMP2042_CW_angjiahau.Models.Platforms"},{"l":"COMP2042_CW_angjiahau.Screens"}]

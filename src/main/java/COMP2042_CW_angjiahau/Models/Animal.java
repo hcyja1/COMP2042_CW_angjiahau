@@ -54,7 +54,7 @@ public class Animal extends Actor {
 	Timeline waterDeathT;
 
 	/**
-	 *Method takes in a String variable which is the name of the character image file name within resource path for frog asset.
+	 *Constructor takes in a String variable which is the name of the character image file name within resource path for frog asset.
 	 * Starts off by setting initial position and adding animation images to the hash maps
 	 * Character controls are set within this method and based on {@link #setOnKeyPressed(EventHandler)} and {@link #setOnKeyReleased(EventHandler)}.
 	 * Key released listener carries out the same actions as key pressed.
@@ -70,10 +70,7 @@ public class Animal extends Actor {
 		addHashWater();
 
 		setOnKeyPressed(event-> {
-			if (noMove) {
-			}
-
-			else{
+			if (!noMove) {
 				music.hopSound();
 					if(event.getEventType() == KeyEvent.KEY_RELEASED){
 						second = true;
@@ -253,7 +250,7 @@ public class Animal extends Actor {
 
 	/**
 	 * Adds animation images of car death into the hash map which is called in {@link #carDeathAnimation()}.
-	 * Images are fetched from death animation file resource path.
+	 * Images are fetched from death animation file resource path(in .png format).
 	 */
 	public void addHashCar(){
 		for(int carDImages=0;carDImages<=3;carDImages++) {
@@ -263,7 +260,7 @@ public class Animal extends Actor {
 
 	/**
 	 * Adds animation images of car death into the hash map which is called in {@link #waterDeathAnimation()}.
-	 * Images are fetched from death animation file resource path.
+	 * Images are fetched from death animation file resource path(in .png format).
 	 */
 	public void addHashWater(){
 		for(int waterDImages=0;waterDImages<=4;waterDImages++) {

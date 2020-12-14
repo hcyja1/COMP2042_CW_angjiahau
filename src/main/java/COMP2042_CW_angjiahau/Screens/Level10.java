@@ -7,7 +7,7 @@ import COMP2042_CW_angjiahau.Models.Display.BackgroundImage;
 public class Level10 extends Level {
 
     /**
-     * This method generates the last level of the game.
+     * This constructor generates the last level of the game.
      * Firstly, each level has its own background image which is added in the method.
      * After that, the obstacles and platforms for each rows are added.
      * The values for the y-coordinates of the rows are fetched from an enumeration at {@link Level}

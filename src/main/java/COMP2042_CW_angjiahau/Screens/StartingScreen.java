@@ -15,7 +15,7 @@ public class StartingScreen extends World{
 
 	/**
 	 * When called and added to stage controller, this method shows the starting screen.
-	 * This method consists of a background image which shows the frogger chracter, game title, and
+	 * This constructor consists of a background image which shows the frogger chracter, game title, and
 	 * and 2 buttons which enable to user to either start game or go to the info screen.
 	 * If the info button is pressed, the stop() function will be called which triggers the next screen that is added
 	 * within the StageController

@@ -8,7 +8,7 @@ import COMP2042_CW_angjiahau.Models.Platforms.WetTurtle;
 
 public class Level6 extends Level {
     /**
-     * This method generates the sixth level of the game.
+     * This constructor generates the sixth level of the game.
      * Firstly, each level has its own background image which is added in the method.
      * After that, the obstacles and platforms for each rows are added.
      * The values for the y-coordinates of the rows are fetched from an enumeration at {@link Level}

@@ -13,7 +13,6 @@ public class BackgroundImage extends Actor {
 	 */
 	public BackgroundImage(String imageName) {
 		setImage(new Image(IMAGE_RESOURCE_PATH + imageName + ".png", 600, 800, false, false));
-		
 	}
 
 	/**

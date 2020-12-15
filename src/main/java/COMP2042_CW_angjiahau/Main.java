@@ -1,5 +1,6 @@
 package COMP2042_CW_angjiahau;
 import java.util.Map;
+import COMP2042_CW_angjiahau.Controllers.LevelGenerator;
 import COMP2042_CW_angjiahau.Controllers.StageController;
 import COMP2042_CW_angjiahau.Controllers.World;
 import COMP2042_CW_angjiahau.Controllers.Music;
@@ -24,31 +25,10 @@ public class Main extends Application {
 	StartingScreen startingScreen;
 	/** Reference Variable declaration which calls infoScreen Class, to be added into stageController */
 	InfoScreen infoScreen;
-	/** Reference Variable declaration which calls Level1 Class, to be added into stageController */
-	Level1 level1;
-	/** Reference Variable declaration which calls Level2 Class, to be added into stageController */
-	Level2 level2;
-	/** Reference Variable declaration which calls Level3 Class, to be added into stageController */
-	Level3 level3;
-	/** Reference Variable declaration which calls Level4 Class, to be added into stageController */
-	Level4 level4;
-	/** Reference Variable declaration which calls Level5 Class, to be added into stageController */
-	Level5 level5;
-	/** Reference Variable declaration which calls Level6 Class, to be added into stageController */
-	Level6 level6;
-	/** Reference Variable declaration which calls Level7 Class, to be added into stageController */
-	Level7 level7;
-	/** Reference Variable declaration which calls Level8 Class, to be added into stageController */
-	Level8 level8;
-	/** Reference Variable declaration which calls Level9 Class, to be added into stageController */
-	Level9 level9;
-	/** Reference Variable declaration which calls Level10 Class, to be added into stageController */
-	Level10 level10;
 	/** Reference Variable declaration to access methods within {@link javafx.scene} package */
 	Scene scene;
 	/** Reference Variable declaration to access methods within {@link StageController} package */
 	StageController stageController;
-
 	/** String variable declaration which has the main resources folder path assigned to it,
 	 * it is set to public so other classes may access the file path */
 	public static final String RESOURCE_PATH = "file:src/main/resources/";
@@ -67,7 +47,7 @@ public class Main extends Application {
 	/**
 	 * This methods adds Levels and Screens (In ascending order) to the stageController object called, then starts the game.
 	 * 	 Method starts off by Assigning reference variables to their respective object Reference.
-	 * 	 After that, the stageController object will call the addScreen function which adds screens to be played and activated.
+	 *  After that, stage controller will add levels from level generator.
 	 * 	 The stage controller then activates the starting Screen for frogger game.
 	 * 	 JavaFX Screen is then set to be unresizable and attemps to show the window by setting visibiliity to true
 	 * 	  Lastly, start() method is called.
@@ -75,35 +55,25 @@ public class Main extends Application {
 	 */
 	@Override
 	public void start(Stage startGame)  {
-
 		startingScreen =  new StartingScreen();
 		infoScreen = new InfoScreen();
-		level1 = new Level1();
-	    level2 = new Level2();	  
-	    level3 = new Level3();
-	    level4 = new Level4();
-	    level5 = new Level5();
-	    level6 = new Level6();
-	    level7 = new Level7();
-	    level8 = new Level8();
-	    level9 = new Level9();
-	    level10 = new Level10();
+
 	    music = new Music();
 		scene  = new Scene(startingScreen,600,800);
 		stageController = new StageController(12,scene);
 
 	    stageController.addScreen("StartingScreen", startingScreen);	
 	    stageController.addScreen("InfoScreen",infoScreen);        
-	    stageController.addScreen("Level1", level1);
-	    stageController.addScreen("Level2", level2);
-	    stageController.addScreen("Level3", level3);	
-	    stageController.addScreen("Level4", level4);
-	    stageController.addScreen("Level5", level5);	
-	    stageController.addScreen("Level6", level6);
-	    stageController.addScreen("Level7", level7);
-		stageController.addScreen("Level8", level8);
-		stageController.addScreen("Level9",level9);
-	    stageController.addScreen("Level10",level10);
+	    stageController.addScreen("Level1", LevelGenerator.getLevel("Level1"));
+	    stageController.addScreen("Level2", LevelGenerator.getLevel("Level2"));
+	    stageController.addScreen("Level3", LevelGenerator.getLevel("Level3"));
+	    stageController.addScreen("Level4", LevelGenerator.getLevel("Level4"));
+	    stageController.addScreen("Level5", LevelGenerator.getLevel("Level5"));
+	    stageController.addScreen("Level6", LevelGenerator.getLevel("Level6"));
+	    stageController.addScreen("Level7", LevelGenerator.getLevel("Level7"));
+		stageController.addScreen("Level8", LevelGenerator.getLevel("Level8"));
+		stageController.addScreen("Level9", LevelGenerator.getLevel("Level9"));
+	    stageController.addScreen("Level10", LevelGenerator.getLevel("Level10"));
 	    stageController.activate("StartingScreen");
 	    stageController.startScene();
 
@@ -111,7 +81,6 @@ public class Main extends Application {
 	    startGame.setScene(scene);
 	    startGame.show();
 	    start();
-
 	}
 
 	/**
@@ -127,7 +96,7 @@ public class Main extends Application {
 			@Override
 			public void handle(long now) {
         	 if (scene.getRoot() == startingScreen && startingScreen.startGame()) {
-					stageController.changeScene("Level1",level1);
+					stageController.changeScene("Level1",LevelGenerator.getLevel("Level1"));
 					startingScreen.resetStartGame();
 				}
 			 if (scene.getRoot() == infoScreen && infoScreen.goBack()) {

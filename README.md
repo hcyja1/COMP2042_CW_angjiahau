@@ -38,6 +38,8 @@ the methods in lambda function setOnKeyPressed within the Animal.java constructo
 In the original file, there were unneccesary images such as "froggerUp", "froggerDown", "TruckLeft" , "TruckRight" etc. 
 By using setRotate(x) method, i have managed to reduce the amount of images used. Hence making space for me to add new images such as Race Cars.
 
+Have also made Button.java class which servers the purpose of creating images of buttons.
+
 ### LevelGenerator and Factory Design Pattern
 Created LevelGenerator.java to generate Level1->Level10.java, which adheres the Factory Design Pattern.
 

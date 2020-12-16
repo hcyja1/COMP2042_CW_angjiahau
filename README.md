@@ -1,28 +1,27 @@
 # COMP2042_CW_angjiahau , Software Maintenance Coursework
 
 ### Classification and sorting for Images and Classes
-Started off by re-aligning the background terrain of the frogger game. After that, i've created extra resources folders and sorted image sprites accordingly.
-**(E.g, obstacles, platforms, misc, end...)** Besides resource folders, I've also created packages and sorted the classes accordingly.
+Realligned the background terrain of the frogger game. Created extra resources folders and sorted image sprites accordingly.
+**(E.g, obstacles, platforms, misc, end...)** Also created packages and sorted the classes accordingly.
 **(E.g, Platforms, Controllers, Display)**  This clarifies the purpose of each element within the project.
 
 ### URL Pathing
-Reduced the frequency of fixed url pathing by constructing a String **"RESOURCE_PATH" = "file:src/main/resources/"**. This concept is then extended to the other classes which
-have file url path involvements. For example, obstacle will be extended to **"OBSTACLE_RESOURCE_PATH = "RESOURCE_PATH + "obstacle/ ""**.
+Reduced the frequency of fixed url pathing by constructing a String **"RESOURCE_PATH" = "file:src/main/resources/"** in Main.java. This concept is then extended to the other classes. E.g , Access to obstacle resources by new String variable **"OBSTACLE_RESOURCE_PATH = "RESOURCE_PATH + "obstacle/ ""**.
 
 ### Creation of Level.java and Music.java 
 MyStage.java originally only had one method which was to play music and to extend World.
-Hence. i've broken down **MyStage.java** into **Level.java** and **Music.java**. After that, i added extra sound files into the Music.java file for when frogger character
+Hence. i've broken down **MyStage.java** into **Level.java** and **Music.java**. After that, i added extra sound files into the Music.java for when frogger character
 is squashed, makes a move, or has drowned.
 Within Level class, i've added all the methods and main elements that a level should have, **(E.g, 5 Ends, frogger character, timer, etc)**. 
 
 ### Multiple Levels, Info Screen, Starting Screen and HighScores
-As mentioned earlier, i made a main Level.java class which holds methods and fields to be inherited by other level classes. Instead of having the y-coordinate values to be hardcoded,
+Within Level.java class which holds methods and fields to be inherited by other level classes, instead of having the y-coordinate values to be hardcoded,
 i've split the window screen into 10 seperate rows and made an enumeration within Level.java which holds the y-coordinate values for each row.
 Hence, when creating objects within levels, the enumeration values for each row can be called by **Rows.ROWX.getValue()**. 
 
 Then, i made an info screen and starting screen.
 
-After that, I made a HighScore class **(HighScore.java)** which creates, reads, writes and store high score files within the resources folder. The controller is called in Level.java. 
+After that, I made a HighScore class **(HighScore.java)** which creates, reads, writes and store high score files within a resource folder. The controller is called in Level.java. 
 I then created 10 different Level classes **(Level1.java -> Level10.java)** which extends **Level.java** . 
 
 ### Animation Timeline and Image Hash Maps
@@ -31,7 +30,7 @@ images within a hash map.
 After that, I created animation timelines for wet turtle, turtle, water death and car death, rather than using the previous method which sets image based on **(now)/VALUE**. 
 
 ### Player Controls
-Have reduced the player controls in Animal.java by calling the statement **setOnKeyReleased(getOnKeyPressed())**, and making adjustments for
+Have shortened the player controls code in Animal.java by calling the statement **setOnKeyReleased(getOnKeyPressed())**, and making adjustments for
 the methods in lambda function setOnKeyPressed within the Animal.java constructor.
 
 ### Image Addition and Reduction

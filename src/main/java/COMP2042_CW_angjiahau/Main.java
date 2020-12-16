@@ -10,7 +10,6 @@ import javafx.scene.*;
 import javafx.stage.Stage;
 import COMP2042_CW_angjiahau.Screens.*;
 
-
 /**
  * Main Class of Frogger Game for Software Maintenance Coursework(COMP2042) 2020
  * @author Ang Jia Hau

@@ -22,7 +22,7 @@ public class InfoScreen extends World {
 		add(froggerback);
 		startLabel = new Buttons("START Label",430,770,150,150);
 		add(startLabel);
-		backButton = new Buttons("BACKButton",15,10,150,150);
+		backButton = new Buttons("BACKButton",15,7,150,150);
 		add(backButton);
 		backButton.setOnMouseClicked(event-> SetGoBack());
 

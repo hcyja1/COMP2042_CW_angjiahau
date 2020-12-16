@@ -26,7 +26,7 @@ After that, I made a HighScore class **(HighScore.java)** which creates, reads, 
 I then created 10 different Level classes **(Level1.java -> Level10.java)** which extends **Level.java** . 
 
 ### Animation Timeline and Image Hash Maps
-Within Turtle.java, WetTurtle.java and Animal.java, there were many iamges which were called depending on situation **(E.g death animations)**. Hence, i've decided to store the
+Within Turtle.java, WetTurtle.java and Animal.java, there were many images which were called depending on situations **(E.g death animations)**. Hence, i've decided to store the
 images within a hash map.
 After that, I created animation timelines for wet turtle, turtle, water death and car death, rather than using the previous method which sets image based on **(now)/VALUE**. 
 

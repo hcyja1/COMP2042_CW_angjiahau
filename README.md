@@ -14,7 +14,7 @@ Hence. i've broken down **MyStage.java** into **Level.java** and **Music.java**.
 is squashed, makes a move, or has drowned.
 Within Level class, i've added all the methods and main elements that a level should have, **(E.g, 5 Ends, frogger character, timer, etc)**. 
 
-### Multiple Levels, Info Screen, Starting Screen and HighScores
+### Multiple Levels, Info Screen, Starting Screen, StageController and HighScores
 Within Level.java class which holds methods and fields to be inherited by other level classes, instead of having the y-coordinate values to be hardcoded,
 i've split the window screen into 10 seperate rows and made an enumeration within Level.java which holds the y-coordinate values for each row.
 Hence, when creating objects within levels, the enumeration values for each row can be called by **Rows.ROWX.getValue()**. 
@@ -23,6 +23,8 @@ Then, i made an info screen and starting screen.
 
 After that, I made a HighScore class **(HighScore.java)** which creates, reads, writes and store high score files within a resource folder. The controller is called in Level.java. 
 I then created 10 different Level classes **(Level1.java -> Level10.java)** which extends **Level.java** . 
+
+The 10 levels, info screen and starting screen are navigated by the methods within a class i created called StageController.
 
 ### Animation Timeline and Image Hash Maps
 Within Turtle.java, WetTurtle.java and Animal.java, there were many images which were called depending on situations **(E.g death animations)**. Hence, i've decided to store the

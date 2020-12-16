@@ -46,7 +46,7 @@ Have created Platform and SinkingPlatform classes for Log, Turtle and Wet Turtle
 new platform and sinking platform characters.
 
 ### collisionCheck() 
-Have made a collisionCheck() method in Animal.java which handles all sorts of collisions. Within this method, have changed the code such that frogger **FOLLOWS** the speed
+Have made a collisionCheck() method(and significantly shortened the original collision check code) in Animal.java which handles all sorts of collisions. Within this method, have changed the code such that frogger **FOLLOWS** the speed
 of platforms. Originally, the moving speed of frogger upon hopping on a platform was hardcoded. Now, the speed for platforms can properly be a variable.
 
 ### Methods in Animal.java

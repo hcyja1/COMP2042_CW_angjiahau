@@ -9,7 +9,6 @@ import org.testfx.framework.junit.ApplicationTest;
 import static java.time.Duration.ofSeconds;
 import static org.junit.jupiter.api.Assertions.assertTimeout;
 
-
 public class ApplicationTimeoutTest extends ApplicationTest {
 
     @Test
@@ -17,7 +16,6 @@ public class ApplicationTimeoutTest extends ApplicationTest {
         assertTimeout(ofSeconds(5), () -> ApplicationTest.launch(Main.class));
     }
 
-    //resource management
     @After
     public void afterEachTest() throws TimeoutException {
         FxToolkit.hideStage();

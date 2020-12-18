@@ -142,7 +142,7 @@ public class Animal extends Actor {
 	 * this method will cause the frogger character to move at the same speed of the platform if isSunk is false.
 	 * If isSunk if true and frogger is on top of the platform, frogger character will die from waterDeath.
 	 * If frogger has reached the end(home) and there is already an existing frogger, the {@link #deathReset()} method will be called.
-	 * Otherwise, the {@link #froggerReachesHome()} method will be called.
+	 * Otherwise, the {@link #froggerReachesHome()} method will be called, and visuals for frogger reaching home will be triggered.
 	 */
 	public void collisionCheck(){
 
@@ -163,6 +163,7 @@ public class Animal extends Actor {
 						music.squashSound();
 						deathReset();
 				}	else {
+					getIntersectingObjects(End.class).get(0).setEnd();
 						froggerReachesHome();
 				}
 			}
@@ -206,7 +207,6 @@ public class Animal extends Actor {
 		points+=50;
 		changeScore = true;
 		yMoved = 800;
-		getIntersectingObjects(End.class).get(0).setEnd();
 		end++;
 		startingPosition();
 	}
@@ -285,6 +285,14 @@ public class Animal extends Actor {
 	}
 
 	/**
+	 * Used in jUnit test to see if {@link #reset()} } has been carried out successfully, and if end == 0 at the beggining of each round.
+	 * @return Number of Ends.
+	 */
+	public int getEnd(){
+		return end;
+	}
+
+	/**
 	 * Method is called to reset character upon death.
 	 * {@link #startingPosition()} is called, initial image of frogger is set, points are deducted by 50 if current points exceeds 50.
 	 * boolean waterDeath and carDeath are reset.
@@ -311,7 +319,7 @@ public class Animal extends Actor {
 		if (getX()<0) {
 			move(movement*2, 0);
 		}
-		if (getX()>600) {
+		if (getX()>=600) {
 			move(-movement*2, 0);
 		}
 	}
@@ -338,7 +346,7 @@ public class Animal extends Actor {
 	 * @return Number of frogs to be sent home before round ends.
 	 */
 	public boolean getStop() {
-		return end==1;
+		return end==5;
 	}
 
 	/**

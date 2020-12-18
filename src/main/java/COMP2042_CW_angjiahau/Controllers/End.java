@@ -38,6 +38,7 @@ public class End extends Actor {
 	public void reset() {
 		activated = false;
 		setImage(new Image("file:src/main/resources/misc/End.png", 60, 60, true, true));
+		toFront();
 	}
 
 	/**

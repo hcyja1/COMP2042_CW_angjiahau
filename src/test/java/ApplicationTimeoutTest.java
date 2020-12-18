@@ -11,11 +11,18 @@ import static org.junit.jupiter.api.Assertions.assertTimeout;
 
 public class ApplicationTimeoutTest extends ApplicationTest {
 
+    /**
+     * jUnit test to make sure application is not lagging and does not take more than 5 seconds to load.
+     */
     @Test
     void timeoutNotExceeded(){
         assertTimeout(ofSeconds(5), () -> ApplicationTest.launch(Main.class));
     }
 
+    /**
+     * Resource management
+     * @throws TimeoutException throws TimeoutException
+     */
     @After
     public void afterEachTest() throws TimeoutException {
         FxToolkit.hideStage();

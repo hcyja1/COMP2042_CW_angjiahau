@@ -28,9 +28,9 @@ public class FroggerSuccessReachHome{
      */
     void start(){
         setAnimal();
+        animal.reset();
         animal.setX(50);
         animal.setY(500);
-        animal.reset();
     }
 
     /**
